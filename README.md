@@ -12,7 +12,7 @@ So, I have uploaded the Markdown files for all 40 chapters in Hacking with Swift
 **If you want to help translate Hacking with Swift into your language, here’s what you need to do:**
 
 1. Fork this repository.
-2. Create a directory with your language code, if it doesn’t already exist – e.g. “fr” for French, “de” for German, “es” for Spanish, “it” for Spanish, “zh” for Chinese, and so on.
+2. Create a directory with your language code, if it doesn’t already exist – e.g. “fr” for French, “de” for German, “es” for Spanish, “it” for Italian, “zh” for Chinese, and so on.
 3. Translate part or all of one Markdown file, placing your new file in your translation directory. Please keep the same filename as the English translation so we can track changes more easily, but if your translation is only partial please append “partial” to the filename – e.g. 3-5-partial.md.
 4. Add a JSON file in the “contributors” directory describing you, along with your 500x500px avatar as a PNG. See paul-hudson.json for an example. Your JSON file should be named your-name.json, e.g. paul-hudson.json, and your avatar should have the same name with the extension “.png”, e.g. paul-hudson.png.
 5. Open a pull request with your changes so I can merge them in.
