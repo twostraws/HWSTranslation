@@ -1,3 +1,6 @@
+# Hacking with Swift Translations
+### A project to create free Swift tutorials for the world
+
 Hacking with Swift is a free online book by Paul Hudson, written in English, teaching the fundamentals of iOS app development using Swift. 
 
 [HackingWithSwift.com](https://www.hackingwithswift.com) had 1.9 million visitors last year, spread across 6.5 million page views – all people keen to have fun learning something new, or build the app of their dreams. But in 2019 I want to take it further: I want to help people learn to build apps even if they can’t speak English.
@@ -9,7 +12,7 @@ So, I have uploaded the Markdown files for all 40 chapters in Hacking with Swift
 **If you want to help translate Hacking with Swift into your language, here’s what you need to do:**
 
 1. Fork this repository.
-2. Create a directory with your two-letter language code, if it doesn’t already exist – e.g. “fr” for French, “de” for German, “es” for Spanish, “it” for Spanish, “zh” for Chinese, and so on.
+2. Create a directory with your language code, if it doesn’t already exist – e.g. “fr” for French, “de” for German, “es” for Spanish, “it” for Spanish, “zh” for Chinese, and so on.
 3. Translate part or all of one Markdown file, placing your new file in your translation directory. Please keep the same filename as the English translation so we can track changes more easily, but if your translation is only partial please append “partial” to the filename – e.g. 3-5-partial.md.
 4. Add a JSON file in the “contributors” directory describing you, along with your 500x500px avatar as a PNG. See paul-hudson.json for an example. Your JSON file should be named your-name.json, e.g. paul-hudson.json, and your avatar should have the same name with the extension “.png”, e.g. paul-hudson.png.
 5. Open a pull request with your changes so I can merge them in.
@@ -42,7 +45,7 @@ To get started, all you have to do is translate part or all of the English Markd
 
 Alternatively, open a work in progress pull request using your language and chapter number, so others can see someone else is working on it.
 
-If you’d like to play a more active role and have already made a few commits, I’d be happy to add you as a contributor to the project so you can act as a reviewer for your preferred language.
+If you’d like to play a more active role and have already made a few commits, I’d be happy to add you as a contributor to the project so you can act as a reviewer for your preferred language. If some languages end up with severl active translators, I suspect creating a Trello board or similar might work well.
 
 
 ## License
@@ -51,7 +54,7 @@ I want to make a few things clear up front to avoid disappointment and/or confus
 
 - This does *not* give you the right to distribute any material here, either commercially or otherwise.
 - This does however give you the ability to download all of the Hacking with Swift book for your personal offline use.
-- When you commit code to this repository you are granting Paul Hudson the right to distribute your translation. 
+- When you commit code to this repository you are granting [Paul Hudson](https://twitter.com/twostraws) the right to distribute your translation. 
 - When you add your avatar to the contributors directory you confirm you have the right to distribute that image, and are granting Paul Hudson the same right.
 - When you commit code to this repository you are granting other contributors the right to modify your translation in this repository, either to make corrections, to follow Swift changes, because the original English book has changed, or other similar reasons.
 
