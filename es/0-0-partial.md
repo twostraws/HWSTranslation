@@ -1,15 +1,13 @@
-# ¿Por donde empezar?
+# ¿Dónde empezar?
 
-He escrito una serie de tutoriales gigantesca con la idea de enseñarte Swift desde cero al mismo tiempo que desarrollas más de 20 aplicaciones y juegos reales. Aprenderás todas las tecnologías necesarias para convertirte en un desarrollador de aplicaciones iOS. Los tutoriales están escritos de forma que vas aprendiendo lo que vas necesitando mientras vas avanzando en los tutoriales, de esta forma aprendes los componentes de Swift que son relevantes para cada proyecto. Al finalizar los tutoriales habrás aprendido todo el lenguage y tendrás una vasta cantidad de aplicaciones para omostrar.  
- 
-I have produced a huge tutorial series that teaches Swift from scratch, while helping you build over 20 real apps and games. You learn all the core technologies required to be a great iOS developer, but it's written in a "need-to-know" basis so you only learn the parts of Swift that matter for each particular project. By the end you've learned all the language and have lots of apps to show for your work.
+He escrito una serie de tutoriales bastante grande con la idea de enseñarte Swift desde cero, al mismo tiempo que desarrollas más de 20 aplicaciones y juegos reales. Aprenderás todas las tecnologías necesarias para convertirte en desarrollador de aplicaciones iOS. Los tutoriales están escritos de forma que vas aprendiendo lo que vas necesitando mientras avanzas en ellos, de esta forma aprendes las partes de Swift que son relevantes para cada proyecto. Al finalizar los tutoriales habrás aprendido todo el lenguage y tendrás una vasta cantidad de aplicaciones para mostrar.
 
-If you like to learn a language by creating hands-on projects, you can skip this language introduction and get straight into coding. However, if this is your very first time using Swift, you will almost certainly find this introduction useful because it walks you through all the most important language features.
+Si te gusta aprender un lenguaje de programación utilizando proyectos prácticos, puedes saltarte la introducción e ir directamente al capítulo en el que se desarrolla el primer proyecto. En el caso de que este sea tu primer contacto con Swift, seguramente encontrarás esta introducción bastante útil porque te muestra las funcionalidades o partes mas importantes del lenguaje.
 
-**I don't mind which option you choose, so I'm giving you both.**
+**No importa realmente cuál forma de aprendizaje elijas, por eso te muestro ambas alternativas**
 
-If you prefer to learn Swift by example, I advise you to skip the rest of this introduction and go straight to Project 1 where you start learning Swift with a real app.
+Si prefieres aprender Swift a través de ejemplos, te sugiero que omitas el resto de esta introducción y ve directamente al Proyecto 1 donde comenzarás a aprender Swift escribiendo una aplicación real.
 
-If you prefer to learn Swift in one lump, you should carry on reading this language introduction. When you finish, you'll still go on to Project 1 where you apply the Swift you learned to a real app.
+Si prefieres aprender todo Swift primero, te sugiero continúes leyendo la introducción al lenguaje. Cuando finalices, en cualquier caso, te encontrarás con el Proyecto 1 donde podrás utilizar todo tu conocimiento en una aplicación real.
 
-Don't worry, you're not missing out: there is *nothing* in this introduction that is not covered in the subsequent projects. I'm just presenting this choice to you because you know how you learn better than I do, so you get to choose your preferred starting point.
+No te precoupes, no te pierdes nada: *no hay nada* de la introducción al lenguaje que quede fuera de los proyectos. Sólo te doy alternativas ya que nadie sabe mejor que tú cómo aprendes, por tanto tú elijes por dónde empezar.
