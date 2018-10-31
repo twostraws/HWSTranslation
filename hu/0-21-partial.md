@@ -1,4 +1,4 @@
-# Funkcionális blokkok _(Closures)_
+# Closures [^closure]
 
 You've met integers, strings, doubles, floats, Booleans, arrays, dictionaries, structs and classes so far, but there's another type of data that is used extensively in Swift, and it's called a closure. These are complicated, but they are so powerful and expressive that they are used pervasively in Cocoa Touch, so you won't get very far without understanding them.
 
@@ -29,10 +29,12 @@ Swift's system of automatically capturing a closure's environment is very helpfu
 
 As closures are used so frequently, Swift can apply a little syntactic sugar to make your code easier to read. The rule is this: if the last parameter to a method takes a closure, you can eliminate that parameter and instead provide it as a block of code inside braces. For example, we could convert the previous code to this:
 
-    let vw = UIView()
-    
-    UIView.animate(withDuration: 0.5) {
-        vw.alpha = 0
-    }
+```swift
+let vw = UIView()
 
-It does make your code shorter and easier to read, so this syntax form – known as trailing closure syntax – is preferred.
+UIView.animate(withDuration: 0.5) {
+    vw.alpha = 0
+}
+```
+
+[^closure]: It does make your code shorter and easier to read, so this syntax form – known as trailing closure syntax – is preferred. Closures are self-contained blocks of functionality that can be passed around and used in your code. Closures in Swift are similar to blocks in C and Objective-C and to lambdas in other programming languages.
