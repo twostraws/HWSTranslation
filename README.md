@@ -45,7 +45,7 @@ To get started, all you have to do is translate part or all of the English Markd
 
 Alternatively, open a work in progress pull request using your language and chapter number, so others can see someone else is working on it.
 
-If you’d like to play a more active role and have already made a few commits, I’d be happy to add you as a contributor to the project so you can act as a reviewer for your preferred language. If some languages end up with severl active translators, I suspect creating a Trello board or similar might work well.
+If you’d like to play a more active role and have already made a few commits, I’d be happy to add you as a contributor to the project so you can act as a reviewer for your preferred language. If some languages end up with several active translators, I suspect creating a Trello board or similar might work well.
 
 
 ## License
