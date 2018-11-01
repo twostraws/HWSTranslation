@@ -1,8 +1,8 @@
-# Parsing JSON using the Codable protocol
+# JSON parsen mit dem Codable-Protokoll
 
-JSON – short for JavaScript Object Notation – is a way of describing data. It's not the easiest to read yourself, but it's compact and easy to parse for computers, which makes it popular online where bandwidth is at a premium.
+JSON - kurz für JavaScript Object Notation - ist eine Art, Daten zu beschreiben. Es ist nicht gerade das lesbarste Format, aber es ist kompakt und kann leicht von Computern geparst werden, was es online beliebt macht, wo Bandbreite kostbar ist.
 
-Before we do the parsing, here is a tiny slice of the actual JSON you'll be receiving:
+Bevor wir uns ans Parsen machen, hier ein winziger Ausschnitt der tatsächlichen JSON, welche du empfangen wirst:
 
     {
         "metadata":{
@@ -45,22 +45,22 @@ Before we do the parsing, here is a tiny slice of the actual JSON you'll be rece
         ]
     }
 
-You'll actually be getting between 2000-3000 lines of that stuff, all containing petitions from US citizens about all sorts of political things. It doesn't really matter (to us) what the petitions are, we just care about the data structure. In particular:
+Tatsächlich wirst du 2000-3000 Zeilen von diesem Zeug kriegen, die Petitionen von US-Bürgern über alle möglichen politischen Dinge enthalten. Es ist eigentlich gar nicht wichtig (für uns), um was es bei den Petitionen geht, wir interessieren uns nur für die Datenstruktur. Insbesondere:
 
-1. There's a metadata value, which contains a `responseInfo` value, which in turn contains a status value. Status 200 is what internet developers use for "everything is OK."
-2. There's a results value, which contains a series of petitions.
-3. Each petition contains a title, a body, some issues it relates to, plus some signature information.
-4. JSON has strings and integers too. Notice how the strings are all wrapped in quotes, whereas the integers aren't.
+1. Es gibt einen Metadaten-Wert, der einen Wert namens `responseInfo` enthält, der wiederum einen Status-Wert enthält. Mit Status 200 meinen Internet-Entwickler, dass "alles OK" ist.
+2. Es gibt einen Resultat-Wert, der eine Reihe von Petitionen enthält.
+3. Jede Petition enthält einen Titel, einen Textkörper, einige Sachverhalte, zu denen sie Bezug hat, und Informationen zu den Unterschriften.
+4. JSON hat auch Strings und Integers (Ganzzahlen). Beachte, wie alle Strings von Anführungszeichen umgeben sind, die Ganzzahlen aber nicht.
 
-Swift has built-in support for working with JSON using a protocol called `Codable`. When you say “my data conforms to `Codable`”, Swift will allow you to convert freely between that data and JSON using only a little code.
+Swift hat eine eingebaute Unterstützung für JSON mit einem Protokoll namens `Codable`. Wenn du sagst, "meine Daten genügen `Codable`", wird Swift dir erlauben, mit nur wenig Code frei zwischen diesen Daten und JSON zu konvertieren.
 
-Swift’s simple types like `String` and `Int` automatically conform to `Codable`, and arrays and dictionaries also conform to `Codable` if they contain `Codable` objects. That is, `[String]` conforms to `Codable` just fine, because `String` itself conforms to `Codable`.
+Swifts einfache Typen wie `String` und `Int` genügen automatisch `Codable`, und Arrays und Dictionaries genügen ebenfalls `Codable`, wens sie `Codable`-Objekte enthalten. Das heißt, `[String]` genügt `Codable` problemlos, da `String` selbst `Codable` genügt. 
 
-Here, though, we need something more complex: each petition contains a title, some body text, a signature count, and more. That means we need to define our own custom data type rather than just using a simple `String` or `Int`. 
+Hier benötigen wir allerdings etwas Komplexeres: jede Petition enthält einen Titel, einen Textkörper, die Anzahl der Unterschriften, und mehr. Das heißt, wir müssen unseren eigenen maßgeschneiderten Datentyp definieren anstatt einfach nur  `String` oder `Int` zu verwenden.
 
-Swift has two ways of making custom data types, known as structs and classes. We’ve already been using classes – all our `UIViewController` subclasses are classes – but when you’re working with your own data rather than creating a subclass it’s generally better to work structs because they are simpler.
+Swift hat zwei Wege, um eigene Datentypen zu erzeugen, die als Structs und Klassen bekannt sind. Wir haben Klassen schon verwendet - alle unsere `UIViewController`-Subklassen sind Klassen - aber wenn du mit eigenen Daten arbeitest anstatt eine Subklasse zu erzeugen, ist es im Allgemeinen besser, mit Structs zu arbeiten, da sie einfacher sind. 
 
-We’re going to create a custom struct called `Petition` that stores one petition from our JSON, which means it will track the title string, body string, and signature count integer. So, start by pressing Cmd+N and choosing to create a new Swift file called Petition.swift.
+Wir werden ein eigenes Struct `Petition` erzeugen, das eine Petition aus unserer JSON enthält, das heißt, es wird den Titel-String, den Textkörper-String, und die Anzahl der Unterschriften, eine Ganzzahl, speichern. Drücke daher Cmd+N und wähle eine neue Swift-Datei mit dem Namen Petition.swift.
 
     struct Petition {
         var title: String
@@ -68,9 +68,9 @@ We’re going to create a custom struct called `Petition` that stores one petiti
         var signatureCount: Int
     }
 
-That defines a custom struct with three properties. One of the advantages of structs in Swift is that it gives us a *memberwise initializer* – a special function that can create new `Petition` instances by passing in values for `title`, `body`, and `signatureCount`.
+Dies definiert ein spezielles Struct mit drei Eigenschaften. Einer der Vorteile von Structs in Swift ist, dass sie uns einen *elementweisen Initialisierer* geben - eine spezielle Funktion, die neue `Petition`-Instanzen erzeugen kann, indem Werte für `title`, `body` und `signatureCount` übergeben werden.
 
-We’ll come onto that in a moment, but first I mentioned the `Codable` protocol. Our `Petition` struct contains two strings and an integer, all of which conforms to `Codable` already, so we can ask Swift to make the whole `Petition` type conform to `Codable` like this:
+Dazu kommen wir gleich, aber zunächst hatte ich das `Codable`-Protokoll erwähnt. Unser `Petition` Struct enthält zwei Strings und eine Ganzzahl, die alle bereits `Codable` genügen, daher können wir Swift sagen, dass der ganze `Petition`-Typ `Codable` erfüllen soll, und zwar so: 
 
     struct Petition: Codable {
         var title: String
@@ -78,31 +78,31 @@ We’ll come onto that in a moment, but first I mentioned the `Codable` protocol
         var signatureCount: Int
     }
 
-With that simple change we’re almost ready to load instances of `Petition` from JSON.
+Mit dieser simplen Änderung sind wir beinahe soweit, Instanzen von `Petition` aus JSON zu laden.
 
-I say *almost* ready because there’s a slight wrinkle in our plan: if you looked at the JSON example I gave above, you’ll have noticed that our array of petitions actually comes inside a dictionary called “results”. This means when we try to have Swift parse the JSON we need to load that key first, then *inside* that load the array of petition results.
+Ich sage *beinahe* soweit, denn da ist noch ein kleiner Haken in unserem Plan: wenn du dir das oben gegebene JSON-Beispiel angeschaut hast, ist dir aufgefallen, dass unserer Petitions-Array tatsächlich innerhalb eines Dictionaries namens "results" liegt. Das bedeutet, wenn wir veruchen, Swift den JSON-Code parsen zu lassen, müssen wir zuerst den Schlüssel laden, und dann *darin* das Array der Petitions-Resulate laden. 
 
-Swift’s `Codable` protocol needs to know exactly where to find its data, which in this case means making a *second* struct. This one will have a single property called `results` that will be an array of our `Petition` struct. This matches exactly how the JSON looks: the main JSON contains the `results` array, and each item in that array is a `Petition`.
+Swifts `Codable`-Protokoll muss exakt wissen, wo es die Daten findet, was in diesem Falle bedeutet, ein *zweites* Struct zu machen. Dieses wird eine einzelne Eigenschaft namens `results` haben, welches ein Array von unseren `Petition`-Structs ist. Das passt dann exakt dazu, wie JSON aussieht: die Haupt-JSON enthält das `results`-Array, und in jedem Element in diesem Array ist eine `Petition`.
 
-So, press Cmd+N again to make a new file, choosing Swift file and naming it Petitions.swift. Give it this content:
+Drücke also erneut Cmd+N, um eine neue Datei zu erzeugen, wähle Swift-Datei und nenne sie Petitions.swift. Gib ihr diesen Inhalt: 
 
     struct Petitions: Codable {
         var results: [Petition]
     }
 
-I realize this seems like a lot of work, but trust me: it gets much easier!
+Ich sehe ein, dass das nach einer Menge Arbeit aussieht, aber vertrau mir: es wird noch viel leichter!
 
-All we’ve done is define the kinds of data structures we want to load the JSON into. The next step is to create a property in `ViewController` that will store our petitions array.
+Alles, was wir getan haben, war, die Datenstrukturen zu definieren, in die wir die JSON laden wollen. Der nächste Schritt ist, eine Eigenschaft in `ViewController` zu erzeugen, die unser Petitions-Array speichert.
 
-As you'll recall, you declare arrays just by putting the data type in brackets, like this:
+Wie du dich erinnerst, deklarierst du Arrays, indem du einfach den Datentyp in eckigen Klammern schreibst, so wie hier:
 
     var petitions = [String]()
 
-We want to make an array of our `Petition` object. So, it looks like this:
+Wir wollen ein Array aus unserem `Petition`-Objekt machen. Das sieht dann so aus:
 
     var petitions = [Petition]()
 
-Put that in place of the current `petitions` definition at the top of ViewController.swift.
+Ersetze damit die aktuelle `petitions`-Definition am Anfang von ViewController.swift.
 
 It's now time to parse some JSON, which means to process it and examine its contents. We're going to start by updating the `viewDidLoad()` method for `ViewController` so that it downloads the data from the Whitehouse petitions server, converts it to a Swift `Data` object, then tries to convert it to an array of `Petition` instances.
 
