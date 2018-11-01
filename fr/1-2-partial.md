@@ -1,10 +1,10 @@
 # Lister des images avec le gestionnaire de fichiers (FileManager)
 
-Les images que je vous ai fournies proviennent de la NOAA (National Oceanic and Atmospheric Administration), une agence gouvernementale américaine qui produit du contenu dnas le domaine public que nous pouvons librement réutiliser. Une fois qu'elles ont été copiées dans votre projet, Xcode intégrera automatiquement les images dans votre application finale, lors de la phase de compilation, afin que vous puissiez y accéder.
+Les images que je vous ai fournies proviennent de la NOAA (National Oceanic and Atmospheric Administration), une agence gouvernementale américaine qui produit du contenu dans le domaine public que nous pouvons librement réutiliser. Une fois qu'elles ont été copiées dans votre projet, Xcode les intégrera automatiquement dans votre application finale, lors de la phase de compilation, afin que vous puissiez y accéder.
 
-En coulisse, une application iOS est en réalité un répertoire contenant de nombreux fichiers : le fichier binaire lui-même (c'est la version compilée de votre code, prêt à être exécutée), tout le contenu multimédia que votre application utilise, tous les fichiers relatifs à présentation visuelle, ainsi qu'une variété d'autres choses telles que des métadonnées et les droits liés à la sécurité.
+En coulisse, une application iOS est en réalité un répertoire contenant de nombreux fichiers : le fichier binaire lui-même (c'est la version compilée de votre code prêt à être exécuté), tout le contenu multimédia que votre application utilise, tous les fichiers relatifs à la présentation visuelle, ainsi qu'une variété d'autres choses telles que des métadonnées et les droits liés à la sécurité.
 
-Ce répertoire s'appelle un paquet (Bundle en Anglais) et porte l'extension .app. Comme nos fichiers multimédias sont perdus dans l'arborescence du répertoire, nous pouvons demander au système de nous indiquer tous les fichiers présents dans le dossier, puis d'extraire ceux que nous voulons. Vous avez peut-être remarqué que le nom de toutes les images commence par "nssl" (abréviation de National Severe Storms Laboratory). Notre tâche est donc simple : lister tous les fichiers présents dans le répertoire de notre application et extraire ceux commençant par "nssl".
+Ce répertoire s'appelle un paquet (Bundle en anglais) et porte l'extension .app. Comme nos fichiers multimédias sont perdus dans l'arborescence du répertoire, nous pouvons demander au système de nous indiquer tous les fichiers présents dans le dossier, puis d'extraire ceux que nous voulons. Vous avez peut-être remarqué que le nom de toutes les images commence par "nssl" (abréviation de National Severe Storms Laboratory). Notre tâche est donc simple : lister tous les fichiers présents dans le répertoire de notre application et extraire ceux commençant par "nssl".
 
 Pour l'instant, nous allons charger cette liste et seulement l’afficher dans le visualiseur de logs intégré à Xcode, mais nous les ferons bientôt apparaître dans notre application.
 
@@ -19,17 +19,17 @@ Donc première étape : ouvrir le fichier ViewController.swift. Un contrôleur d
         }
     }
 
-That contains five interesting things I want to discuss before moving on.
+Ce code contient cinq choses intéressantes dont je veux parler avant de continuer.
 
-1. The file starts with `import UIKit`, which means “this file will reference the iOS user interface toolkit.”
-2. The `class ViewController: UIViewController` line means “I want to create a new screen of data called ViewController, based on UIViewController.” When you see a data type that starts with “UI”, it means it comes from UIKit. `UIViewController` is Apple’s default screen type, which is empty and white until we change it.
-3. The line `override func viewDidLoad()` starts a method (a block of code), which is a piece of code inside our `ViewController` screen. The `override` keyword is needed because it means “we want to change Apple’s default behavior from `UIViewController`.” `viewDidLoad()` is called when the screen has loaded, and is ready for you to customize.
-4. There are lots of `{` and `}` characters. These symbols, known as *braces* (or sometimes *curly brackets*) are used to mark chunks of code, and it's convention to indent lines inside braces so that it's easy to identify where code blocks start and end. The outermost braces contain the entire `ViewController` data type, and inner braces mark the start and end of the `viewDidLoad()` method.
-5. The `viewDidLoad()` method contains one line of code saying `super.viewDidLoad()` and one line of comment (that’s the line starting with `//`). This `super` call mean “tell Apple’s `UIViewController` to run its own code before I run mine,” and you’ll see this used a lot.
+1. Le fichier commence par `import UIKit`, ce qui signifie que “ce fichier fera référence à la boîte à outils the iOS user interface toolkit.”
+2. La ligne `class ViewController: UIViewController` signifie “Je veux créer un nouvel écran contenant des données appéle ViewController, basé sur UIViewController.” Lorsqu'un type de données commence par “UI”, cela signifie qu'il provient de UIKit. `UIViewController` est le type d'éran par défaut, vide et blanc jusqu'à ce que nous le modifions.
+3. La ligne `override func viewDidLoad ()` commence une méthode (un bloc de code), qui est un morceau de code situé dans notre écran `ViewController`. Le mot-clé `override` est nécessaire car il signifie que "nous voulons modifier le comportement par défaut du `UIViewController` d'Apple. `ViewDidLoad()` est appelée lorsque l’écran a été chargé et est prêt à être personnalisé.
+4. Il y a beaucoup de caractères `{` et `}`. Ces symboles, appelés *accolades* sont utilisés pour délimiter des morceaux de code. Il est généralement conseillé de mettre en retrait les lignes de code à l'intérieur des accolades afin d'identifier plus facilement où commencent et se terminent les blocs de code. Les accolades situées le plus à l'extérieur contiennent l'intégralité du type de données `ViewController`. Les accolades situées à l'intérieur marquent le début et la fin de la méthode `viewDidLoad()`.
+5. La méthode `viewDidLoad()` contient la ligne de code `super.viewDidLoad()` et un commentaire (la ligne commençant par `//`). Le terme `super` signifie "indique au `UIViewController` d'Apple d'exécuter son propre code avant que je n'exécute le mien", et vous verrez qu'il est souvent utilisé.
 
-We’ll come back to this code a *lot* in future projects; don’t worry if it’s all a bit hazy right now.
+Nous reviendrons souvent sur ce code dans les prochains projets ; ne vous inquiétez pas si tout est un peu flou pour le moment.
 
-**No line numbers?** While you’re reading code, it’s frequently helpful to have line numbers enabled so you can refer to specific code more easily. If your Xcode isn't showing line numbers by default, I suggest you turn them on now: go to the Xcode menu and choose Preferences, then choose the Text Editing tab and make sure "Line numbers" is checked.
+**Pas de numéros de lignes ?** Lorsque vous lisez du code, il est souvent utile d’afficher les numéros des lignes afin que vous puissiez vous référer plus facilement à un morceau de code spécifique. Si Xcode ne vous affiche pas par défaut les numéros de lignes, je vous suggère d'activer cette option dès à présent : cliquez sur Xcode dans la barre des menus et choisissez Preferences, puis cliquez sur l'onglet Text Editing et assurez-vous que "Line Numbers" est coché.
 
 As I said before, the `viewDidLoad()` method is called when the screen has loaded and is ready for you to customize. Everything between `func viewDidLoad() {` and the `}` that follows a few lines later is part of that method, and will get called when you can start customizing the screen.
 
