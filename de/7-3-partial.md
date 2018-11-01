@@ -80,7 +80,7 @@ Dazu kommen wir gleich, aber zunächst hatte ich das `Codable`-Protokoll erwähn
 
 Mit dieser simplen Änderung sind wir beinahe soweit, Instanzen von `Petition` aus JSON zu laden.
 
-Ich sage *beinahe* soweit, denn da ist noch ein kleiner Haken in unserem Plan: wenn du dir das oben gegebene JSON-Beispiel angeschaut hast, ist dir aufgefallen, dass unserer Petitions-Array tatsächlich innerhalb eines Dictionaries namens "results" liegt. Das bedeutet, wenn wir veruchen, Swift den JSON-Code parsen zu lassen, müssen wir zuerst den Schlüssel laden, und dann *darin* das Array der Petitions-Resulate laden. 
+Ich sage *beinahe* soweit, denn da ist noch ein kleiner Haken in unserem Plan: wenn du dir das oben gegebene JSON-Beispiel angeschaut hast, ist dir aufgefallen, dass unserer Petitions-Array tatsächlich innerhalb eines Dictionaries namens "results" liegt. Das bedeutet, wenn wir versuchen, Swift den JSON-Code parsen zu lassen, müssen wir zuerst den Schlüssel laden, und dann *darin* das Array der Petitions-Resulate laden. 
 
 Swifts `Codable`-Protokoll muss exakt wissen, wo es die Daten findet, was in diesem Falle bedeutet, ein *zweites* Struct zu machen. Dieses wird eine einzelne Eigenschaft namens `results` haben, welches ein Array von unseren `Petition`-Structs ist. Das passt dann exakt dazu, wie JSON aussieht: die Haupt-JSON enthält das `results`-Array, und in jedem Element in diesem Array ist eine `Petition`.
 
@@ -104,14 +104,14 @@ Wir wollen ein Array aus unserem `Petition`-Objekt machen. Das sieht dann so aus
 
 Ersetze damit die aktuelle `petitions`-Definition am Anfang von ViewController.swift.
 
-It's now time to parse some JSON, which means to process it and examine its contents. We're going to start by updating the `viewDidLoad()` method for `ViewController` so that it downloads the data from the Whitehouse petitions server, converts it to a Swift `Data` object, then tries to convert it to an array of `Petition` instances.
+Jetzt ist es an der Zeit, JSON zu parsen, was bedeutet, sie zu verarbeiten und die Inhalte zu prüfen. Wir fangen damit an, die `viewDidLoad()`-Methode für `ViewController` so anzupassen, dass sie die Daten vom Petitions-Server des Weißen Hauses herunterlädt, sie in ein Swift `Data`-Objekt umwandelt, und dann versucht, dieses in ein Array von `Petition`-Instanzen zu konvertieren.
 
-We haven’t used `Data` before. Like `String` and `Int` it’s one of Swift’s fundamental data types, although it’s even more low level – it holds literally any binary data. It might be a string, it might be the contents of a zip file, or literally anything else.
+Wir haben `Data` bisher noch nicht verwendet. Wie `String` und `Int` ist dies einer der fundamentalen Datentypen von Swift, auch wenn er auf noch niedrigerer Stufe angesiedelt ist - er enthält buchstäblich irgendwelche Binärdaten. Das könnte ein String sein, das könnte der Inhalt einer Zip-Datei sein, or buchstäblich irgendetwas anderes.
 
-`Data` and `String` have quite a few things in common.
-You already saw that `String` can be created using `contentsOfFile` to load data from disk, and `Data` has exactly the same initializer. Both of them can also be created using a `contentsOf` initializer, which downloads data from a URL (specified using `URL`) and makes it available to you.
+`Data` und `String` haben einige Dinge gemeinsam.
+Du hast bereits gesehen, dass ein `String` mit Hilfe von `contentsOfFile` erzeugt werden kann, um Daten von der Festplatte zu laden, und `Data` hat genau den gleichen Initialisierer. Beide können also mit einem `contentsOf`-Initialisierer erzeugt werden, der Daten von einer URL (mit `URL` spezifiziert) herunterlädt und dir zur Verfügung stellt.
 
-This is perfect for our needs – here's the new `viewDidLoad` method:
+Das ist für unsere Zwecke perfekt - hier ist die neue `viewDidLoad`-Methode:
 
     override func viewDidLoad() {
         super.viewDidLoad()
