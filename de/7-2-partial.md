@@ -16,11 +16,11 @@ Du solltest die Übung mittlerweile kennen, zumindest zum Teil. Öffne ViewContr
 
 Wähle seine Prototypen-Zelle aus und nutze den Attribute-Inspektor, um ihr den Bezeichner "Cell" zu geben. Während du dabei bist, ändere Accessory in "Disclosure Indicator"; dies ist ein großartiger UI-Hinweis, und er ist perfekt für dieses Projekt. In diesem Projekt werden wir außerdem den Stil der Zelle ändern - das ist der erste Eintrag im Attribute-Inspektor. Er ist standardmäßig "Default", aber ich bitte dich, ihn zu "Subtitle" zu ändern, damit jede Zeile ein Haupt-Titel-Label und ein Untertitel-Label hat.
 
-![Changing the table view cell style from Basic to Subtitle adds a second line of text we can customize.](7-3.png)
+![Wenn du den Stil der Table View Zelle von Basic zu Subtitle änderst, kannst du eine zweite Zeile Text anpassen.](7-3.png)
 
-Now for the interesting part: we need to wrap this view controller inside two other things. Go to Editor > Embed In > Navigation Controller, and then straight away go to Editor > Embed In > Tab Bar Controller. The navigation controller adds a gray bar at the top called a navigation bar, and the tab bar controller adds a gray bar at the bottom called a tab bar. Hit Cmd+R now to see them both in action.
+Jetzt der interessante Teil: Wir müssen den View Controller in zwei anderen Dingen verpacken. Gehe zu Editor > Embed In > Navigation Controller, und dann direkt zu Editor > Embed In > Tab Bar Controller. Der Navigation Controller fügt open einen Navigation Bar genannten grauen Balken hinzu, und der Tab Bar Controller fügt unten einen Tab Bar genannten grauen Balken hinzu. Drücke nun  Cmd+R, um beide in Aktion zu sehen.
 
-![Interface Builder can embed a view controller directly inside a tab bar controller with one menu click.](7-2.png)
+![Der Interface Builder kann einen View Controller direkt mit nur einem Menü-Klick in einen Tab Bar Controller einbetten.](7-2.png)
 
 Behind the scenes, `UITabBarController` manages an array of view controllers that the user can choose between. You can often do most of the work inside Interface Builder, but not in this project. We're going to use one tab to show recent petitions, and another to show popular petitions, which is the same thing really – all that's changing is the data source.
 
