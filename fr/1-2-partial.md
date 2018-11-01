@@ -19,21 +19,21 @@ Donc première étape : ouvrir le fichier ViewController.swift. Un contrôleur d
         }
     }
 
-Ce code contient cinq choses intéressantes dont je veux parler avant de continuer.
+Ce code contient cinq éléments intéressants dont je veux parler avant de continuer.
 
-1. Le fichier commence par `import UIKit`, ce qui signifie que “ce fichier fera référence à la boîte à outils the iOS user interface toolkit.”
-2. La ligne `class ViewController: UIViewController` signifie “Je veux créer un nouvel écran contenant des données appéle ViewController, basé sur UIViewController.” Lorsqu'un type de données commence par “UI”, cela signifie qu'il provient de UIKit. `UIViewController` est le type d'éran par défaut, vide et blanc jusqu'à ce que nous le modifions.
-3. La ligne `override func viewDidLoad ()` commence une méthode (un bloc de code), qui est un morceau de code situé dans notre écran `ViewController`. Le mot-clé `override` est nécessaire car il signifie que "nous voulons modifier le comportement par défaut du `UIViewController` d'Apple. `ViewDidLoad()` est appelée lorsque l’écran a été chargé et est prêt à être personnalisé.
-4. Il y a beaucoup de caractères `{` et `}`. Ces symboles, appelés *accolades* sont utilisés pour délimiter des morceaux de code. Il est généralement conseillé de mettre en retrait les lignes de code à l'intérieur des accolades afin d'identifier plus facilement où commencent et se terminent les blocs de code. Les accolades situées le plus à l'extérieur contiennent l'intégralité du type de données `ViewController`. Les accolades situées à l'intérieur marquent le début et la fin de la méthode `viewDidLoad()`.
-5. La méthode `viewDidLoad()` contient la ligne de code `super.viewDidLoad()` et un commentaire (la ligne commençant par `//`). Le terme `super` signifie "indique au `UIViewController` d'Apple d'exécuter son propre code avant que je n'exécute le mien", et vous verrez qu'il est souvent utilisé.
+1. Le fichier commence par `import UIKit`, ce qui signifie que "ce fichier fera référence à la boîte à outils relative à l'interface utilisateur d'iOS."
+2. La ligne `class ViewController: UIViewController` signifie "Je veux créer un nouvel écran appelé ViewController, contenant des données et basé sur UIViewController." Lorsqu'un type de données commence par "UI", cela signifie qu'il provient de UIKit. `UIViewController` est le type d'écran par défaut, vide et blanc, jusqu'à ce que nous le modifions.
+3. La ligne `override func viewDidLoad()` commence une méthode (un bloc de code), qui est un morceau de code situé dans notre écran `ViewController`. Le mot-clé `override` est nécessaire car il signifie que "nous voulons modifier le comportement par défaut du `UIViewController` d'Apple". `ViewDidLoad()` est appelée lorsque l’écran a été chargé et est prêt à être personnalisé.
+4. Il y a beaucoup de caractères `{` et `}`. Ces symboles, appelés *accolades*, sont utilisés pour délimiter des blocs de code. Il est généralement conseillé de mettre en retrait les lignes de code à l'intérieur des accolades afin d'identifier plus facilement où commencent et se terminent les blocs de code. Les accolades situées le plus à l'extérieur contiennent l'intégralité du code relatif au type de données `ViewController`. Les accolades situées à l'intérieur marquent le début et la fin de la méthode `viewDidLoad()`.
+5. La méthode `viewDidLoad()` contient la ligne de code `super.viewDidLoad()` et un commentaire (la ligne commençant par `//`). Le terme `super` signifie "indique au `UIViewController` d'Apple d'exécuter son propre code avant que je n'exécute le mien", et vous verrez que ce mot est souvent utilisé.
 
 Nous reviendrons souvent sur ce code dans les prochains projets ; ne vous inquiétez pas si tout est un peu flou pour le moment.
 
-**Pas de numéros de lignes ?** Lorsque vous lisez du code, il est souvent utile d’afficher les numéros des lignes afin que vous puissiez vous référer plus facilement à un morceau de code spécifique. Si Xcode ne vous affiche pas par défaut les numéros de lignes, je vous suggère d'activer cette option dès à présent : cliquez sur Xcode dans la barre des menus et choisissez Preferences, puis cliquez sur l'onglet Text Editing et assurez-vous que "Line Numbers" est coché.
+**Pas de numéro de lignes ?** Lorsque vous lisez du code, il est souvent utile d’afficher le numéro des lignes afin que vous puissiez vous référer plus facilement à un morceau de code spécifique. Si Xcode ne vous affiche pas par défaut le numéros des lignes, je vous suggère d'activer cette option dès à présent : cliquez sur Xcode dans la barre des menus et choisissez Preferences, puis cliquez sur l'onglet Text Editing et assurez-vous que "Line Numbers" est coché.
 
-As I said before, the `viewDidLoad()` method is called when the screen has loaded and is ready for you to customize. Everything between `func viewDidLoad() {` and the `}` that follows a few lines later is part of that method, and will get called when you can start customizing the screen.
+Comme je l'ai dit précédemment, la méthode `viewDidLoad()` est appelée lorsque l'écran a été chargé et est prêt à être personnalisé. Tout ce qui se trouve entre `func viewDidLoad() {` et `}` qui suit quelques lignes plus bas fait partie de cette méthode et sera appelé lorsque vous pourrez commencer à personnaliser l'écran.
 
-We're going to put some more code into that method to load the NSSL images. Add this beneath the line that says `super.viewDidLoad()`:
+Nous allons ajouter un peu de code dans cette méthode pour charger les images NSSL. Ajoutez ceci sous la ligne `super.viewDidLoad()` :
 
     let fm = FileManager.default
     let path = Bundle.main.resourcePath!
