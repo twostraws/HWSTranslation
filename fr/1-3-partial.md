@@ -4,7 +4,7 @@ Notre application charge correctement toutes les images de tempête, mais elle n
 
 Pour résoudre ce problème, notre prochain objectif est de créer une interface graphique affichant la liste des images afin que les utilisateurs puissent en sélectionner une. UIKit - le framework dédié à l'interface utilisateur d'iOS - dispose de nombreux outils intégrés sur lesquels nous allons pouvoir nous appuyer pour créer des applications puissantes qui ont l'apparence et le fonctionnement auxquels les utilisateurs s'attendent.
 
-Pour cette application, le composant principal de notre interface utilisateur s'appelle `UITableViewController`. Il est basé sur `UIViewController` - le type d’écran de base fourni par Apple - mais qui ajoute la possibilité d’afficher des lignes de données qui pouvent défiler et être sélectionnées. `UITableViewController` est visible dans l’application Réglages, Courrier, Notes, Santé et bien d’autres encore. Il est puissant, flexible et extrêmement rapide. Il n’est donc pas surprenant qu’il soit utilisé dans de nombreuses applications.
+Pour cette application, le composant principal de notre interface utilisateur s'appelle `UITableViewController`. Il est basé sur `UIViewController` - le type d’écran de base fourni par Apple - mais qui ajoute la possibilité d’afficher des lignes de données qui pouvent défiler et être sélectionnées. `UITableViewController` est visible dans les applications Réglages, Courrier, Notes, Santé et bien d’autres encore. Il est puissant, flexible et extrêmement rapide. Il n’est donc pas surprenant qu’il soit utilisé dans de nombreuses applications.
 
 Notre écran `ViewController` existant est basé sur `UIViewController`, mais nous souhaitons qu'il soit plutôt basé sur `UITableViewController`. Il n'y a pas grand chose à faire pour cela, mais vous allez découvrir une nouvelle partie de Xcode appelée Interface Builder.
 
@@ -12,17 +12,17 @@ Nous allons passer à Interface Builder dans un instant. Mais tout d’abord, no
 
     class ViewController: UIViewController {
 
-C’est la ligne qui dit "crée un nouvel écran appelé` ViewController` et construise-le à partir de `UIViewController`, celui fourni par Apple". Je souhaite que vous le modifiez cette ligne comme suit:
+C’est la ligne qui dit "crée un nouvel écran appelé` ViewController` et construis-le à partir de `UIViewController`, celui fourni par Apple". Je souhaite que vous modifiez cette ligne comme suit:
 
     class ViewController: UITableViewController {
 
-Ce n'est qu'une petite différence, mais elle est importante : cela signifie que "ViewController" hérite désormais ses fonctionnalités depuis "UITableViewController" et non plus "UIViewController", ce qui nous permet d'accéter à une énorme quantité de fonctionnalités gratuitement, comme vous le verrez dans un instant.
+Ce n'est qu'une petite différence, mais elle est importante : cela signifie que "ViewController" hérite désormais des fonctionnalités de "UITableViewController" et non plus de "UIViewController", ce qui nous permet d'accéder à une énorme quantité de fonctionnalités gratuitement, comme vous le verrez dans un instant.
 
 En coulisses, `UITableViewController` est toujours basé sur `UIViewController` - c'est ce qu'on appelle une "hiérarchie de classes" et ça constitue un moyen courant de créer rapidement des fonctionnalités.
 
-Nous avons modifié le code de `ViewController` afin qu'il soit basé sur `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde. Les interfaces graphiques peuvent être écrites entièrement avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé plus simplement "IB") que `ViewController` est un contrôleur d'affichage sous forme de tableau, de sorte qu'il corresponde à la modification que nous venons d'apporter à notre code.
+Nous avons modifié le code de `ViewController` afin qu'il soit basé sur `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde. Les interfaces graphiques peuvent être écrites entièrement avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé par l'abbréviation "IB") que `ViewController` est un contrôleur d'affichage sous forme de tableau, de sorte qu'il corresponde à la modification que nous venons d'apporter dans notre code.
 
-Jusqu'à présent, nous avons uniquement travailler dans le fichier ViewController.swift, mais j'aimerais maintenant que vous utilisiez le navigateur de projet (le volet de gauche) pour sélectionner le fichier Main.storyboard. Les storyboards contiennent l'interface utilisateur de votre application et vous permettent de visualiser une partie ou l'intégralité de celle-ci sur un seul écran.
+Jusqu'à présent, nous avons uniquement travaillé dans le fichier ViewController.swift, mais j'aimerais maintenant que vous utilisiez le navigateur de projet (le volet de gauche) pour sélectionner le fichier Main.storyboard. Les storyboards contiennent l'interface utilisateur de votre application et vous permettent de visualiser une partie ou l'intégralité de celle-ci sur un seul écran.
 
 Lorsque vous sélectionnez Main.storyboard, vous passez automatiquement sur Interface Builder et vous devriez voir apparaître l’image ci-dessous :
 
