@@ -1,13 +1,13 @@
-どこから始めればいいですか？
+どこから始めれば？
 
-I have produced a huge tutorial series that teaches Swift from scratch, while helping you build over 20 real apps and games. You learn all the core technologies required to be a great iOS developer, but it's written in a "need-to-know" basis so you only learn the parts of Swift that matter for each particular project. By the end you've learned all the language and have lots of apps to show for your work.
+Swiftをゼロから教える巨大なチュートリアルシリーズを制作し、20以上のリアルなアプリやゲームを構築できるようにしました。素晴らしいiOSデベロッパーになるために必要なすべてのコアテクノロジーを学ぶことができますが、それは「知っておく必要がある」基準で書かれているため、特定のプロジェクトごとに重要なSwiftの部分だけを学習します。結局のところ、あなたはすべての言語を学び、あなたの仕事のために多くのアプリを表示することができます。
 
-If you like to learn a language by creating hands-on projects, you can skip this language introduction and get straight into coding. However, if this is your very first time using Swift, you will almost certainly find this introduction useful because it walks you through all the most important language features.
+ハンズオンプロジェクトを作成して言語を習得したい場合は、この言語の紹介をスキップしてコーディングを直接行うことができます。しかし、これがSwiftを初めて使用する場合は、この導入が最も重要な言語機能をすべて説明しているので、この導入が有用であることはほぼ確実です。
 
-I don't mind which option you choose, so I'm giving you both.
+私はどちらのオプションを選んでも構わないので、私はあなたに両方をご提供します。
 
-If you prefer to learn Swift by example, I advise you to skip the rest of this introduction and go straight to Project 1 where you start learning Swift with a real app.
+Swiftを例として学びたい場合は、この紹介の残りの部分をスキップして、実際のアプリでSwiftを学び始めるプロジェクト1にまっすぐ進むことをお勧めします。
 
-If you prefer to learn Swift in one lump, you should carry on reading this language introduction. When you finish, you'll still go on to Project 1 where you apply the Swift you learned to a real app.
+Swiftを一括して学びたい方は、この言語の紹介を読んでください。作業が終わったら、Project 1に進み、実際のアプリに学んだSwiftを適用します。
 
-Don't worry, you're not missing out: there is nothing in this introduction that is not covered in the subsequent projects. I'm just presenting this choice to you because you know how you learn better than I do, so you get to choose your preferred starting point.
+心配しないでください。あなたは欠けているわけではありません。この紹介には、後続のプロジェクトでは扱われていないものはありません。私はこの選択肢をあなたに提示しています。なぜなら、あなたが私よりもうまく学ぶ方法を知っているからです。あなたが好きな出発点を選ぶことができます。
