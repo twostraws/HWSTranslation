@@ -47,7 +47,7 @@ Cliquez sur Table View Controller, puis faites-le glisser dans le grand espace o
 ![Une fois le contrôleur de vue original supprimé et remplacé par le nouveau Table View Controller, Xcode devrait ressembler à ceci.](1-20.png)
 
 
-## Touches finales pour l'interface utilisateur
+## Touches finales sur l'interface utilisateur
 
 Avant d'en avoir fini avec Interface Builder, nous devons faire quelques petits changements.
 
@@ -57,13 +57,13 @@ Deuxièmement, nous devons dire à Xcode que ce Table View Controller est celui 
 
 Troisièmement, je veux que vous utilisiez le volet affichant la structure du document (Document Outline) pour regarder à l'intérieur de notre nouveau Table View Controller. À l'intérieur, vous devriez voir qu'il contient l'élément "Table View", qui à son tour contient "Table View Cell". Une cellule est chargée d’afficher une ligne de données dans un tableau et nous allons afficher le nom d'une image dans chaque cellule.
 
-Veuillez sélectionner "Table Vie Cell" puis, dans Attributes Inspector, entrez le texte "Picture" dans la zone de texte marquée Identifier. Pendant que vous y êtes, changez l'option Custom du menu déroulant Style situé juste au dessus en Basic.
+Veuillez sélectionner "Table View Cell" puis, dans Attributes Inspector, entrez le texte "Picture" dans la zone de texte marquée Identifier. Pendant que vous y êtes, changez l'option Custom du menu déroulant Style situé juste au-dessus en Basic.
 
-Enfin, nous allons placer le Table View Controller dans un autre controller. Il s'agit de quelque chose que nous n’avons pas besoin de configurer et dont nous n'avons pas à nous inquiéter, mais c’est un élément d’interface utilisateur que nous rencontrons fréquemment sur iOS et je pense que vous allez le reconnaître immédiatement. C'est ce qu'on appelle un Navigation Controller (contrôleur de navigation) et vous pouvez le voir en action dans les applications Réglages et Mail. C'est lui qui fournit la fine barre grise en haut de l'écran et est responsable de l'animation qui fait glisser l'écran de droite à gauche qui se produit lorsque vous vous déplacez entre plusieurs écrans sur iOS.
+Enfin, nous allons placer le Table View Controller dans un autre contrôleur de vue que nous n’avons pas besoin de configurer et dont nous n'avons pas à nous inquiéter, mais c’est un élément d’interface utilisateur que nous rencontrons fréquemment sur iOS et je pense que vous allez le reconnaître immédiatement. C'est ce qu'on appelle un Navigation Controller (contrôleur de navigation) et vous pouvez le voir en action dans les applications Réglages et Mail. C'est lui qui fournit la fine barre grise en haut de l'écran et est responsable de l'animation qui fait glisser l'écran de droite à gauche qui se produit lorsque vous vous déplacez dans les différents écrans sur iOS.
 
-Pour placer notre Table View Controller dans un Navigation Controller, il nous suffit d'accéder au menu Editor et de choisir Embed In > Navigation Controller. Interface Builder va déplacer votre contrôleur de vue existant vers la droite et ajouter un Navigation Controller juste à côté - vous devriez maintenant voir une barre grise au-dessus de la Table View. Il déplacera également la propriété "Is Initial View Controller" sur le Navigation Controller.
+Pour placer notre Table View Controller dans un Navigation Controller, il nous suffit d'accéder au menu Editor et de choisir Embed In > Navigation Controller. Interface Builder va déplacer le contrôleur de vue existant vers la droite et ajouter un Navigation Controller juste à côté - vous devriez maintenant voir une barre grise au-dessus de la Table View. Il déplacera également la propriété "Is Initial View Controller" sur le Navigation Controller.
 
-À ce stade, vous en avez assez fait pour jeter un oeil sur les résultats de votre travail : appuyez maintenant sur le bouton Play de Xcode ou appuyez sur les touches Cmd + R si vous voulez vous sentir un peu élite. Une fois que votre code s'exécute, vous verrez maintenant l'écran blanc tout vide remplacé par une vue avec une Table View vide. Si vous cliquez et faites glisser votre souris, vous verrez apparaître des bares de défilement et des rebonds comme on peut s'y attendre, même si de toute évidence il n’y a pas encore de données. Vous devriez également voir une barre de navigation grise en haut ; ça sera important pour plus tard.
+À ce stade, vous en avez assez fait pour vouloir jeter un coup d'oeil sur les résultats de votre travail : appuyez maintenant sur le bouton Play de Xcode ou appuyez sur les touches Cmd + R si vous voulez passer pour un pro. Une fois que votre code s'exécute, vous voyez maintenant, à la place de l'écran blanc tout vide, un écran avec une Table View vide. Si vous cliquez et faites glisser votre souris, vous voyez apparaître des bares de défilement et des rebonds comme vous pouvez vous y attendre, même si de toute évidence il n’y a pas encore de données. Vous devriez également voir une barre de navigation grise en haut ; ça sera important pour plus tard.
 
 
 ## Showing lots of rows
