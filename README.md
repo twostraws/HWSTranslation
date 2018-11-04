@@ -13,10 +13,11 @@ So, I have uploaded the Markdown files for all 40 chapters in Hacking with Swift
 
 1. Fork this repository.
 2. Create a directory with your language code, if it doesn’t already exist – e.g. “fr” for French, “de” for German, “es” for Spanish, “it” for Italian, “zh” for Chinese, and so on.
-3. Translate part or all of one Markdown file, placing your new file in your translation directory. Please keep the same filename as the English translation so we can track changes more easily, but if your translation is only partial please append “partial” to the filename – e.g. 3-5-partial.md.
-4. Add a JSON file in the “contributors” directory describing you, along with your 500x500px avatar as a PNG. See paul-hudson.json for an example. Your JSON file should be named your-name.json, e.g. paul-hudson.json, and your avatar should have the same name with the extension “.png”, e.g. paul-hudson.png.
-5. *Before* you commit your changes, make *sure* you pull the latest changes from the repository so that you don't end up with large merge commits.
-6. Go ahead and commit your changes, then open a pull request so they can be merged in.
+3. Check the Issues tab to see which files are currently marked as "Taken" for your target language. Taken issues are there to let people know who is working on what right now, so we don't repeat work by accident. When you want to mark a file as being taken by you, create an issue using this name structure: "Taken: [language code] Filename.md". For example, "Taken: [es] 10-1.md"
+4. Translate part or all of one Markdown file, placing your new file in your translation directory. Please keep the same filename as the English translation so we can track changes more easily, but if your translation is only partial please append “partial” to the filename – e.g. 3-5-partial.md.
+5. Add a JSON file in the “contributors” directory describing you, along with your 500x500px avatar as a PNG. See paul-hudson.json for an example. Your JSON file should be named your-name.json, e.g. paul-hudson.json, and your avatar should have the same name with the extension “.png”, e.g. paul-hudson.png.
+6. *Before* you commit your changes, make *sure* you pull the latest changes from the repository so that you don't end up with large merge commits.
+7. Go ahead and commit your changes, then open a pull request so they can be merged in.
 
 **IMPORTANT NOTE 1:** If you open a pull request with your translation, you are granting two important rights: the right for me (Paul Hudson) to distribute your translation so that others can read it, and the right for others to modify your translation in the future. The former is important otherwise I can’t feature your work on the site, and the latter is important because as Swift continues to evolve we need to make sure the translations stay up to date.
 
