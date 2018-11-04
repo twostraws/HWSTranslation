@@ -26,25 +26,25 @@ Jusqu'à présent, nous avons uniquement travaillé dans le fichier ViewControll
 
 Lorsque vous sélectionnez Main.storyboard, vous passez automatiquement sur Interface Builder et vous devriez voir apparaître l’image ci-dessous :
 
-![The Single View App template gives you one large, empty canvas to draw on.](1-19.png)
+![Le modèle Single View App vous présente un grand espace vide sur lequel dessiner.](1-19.png)
 
-That big white space is what produces the big white space when the app runs. If you drop new components into that space, they would be visible when the app runs. However, we don’t want to do that – in fact, we don’t want that big white space at all, so we’re going to delete it.
+Ce grand espace blanc est ce qui produit le grand espace blanc lorsque l'application est exécutée. Si vous déposez de nouveaux composants dans cet espace, ils seront visibles lors de l'exécution de l'application. Cependant, nous ne voulons pas faire cela - en fait, nous ne voulons pas du tout ce grand espace blanc, nous allons donc le supprimer.
 
-The best way to view, select, edit, and delete items in Interface Builder is to use the document outline, but there’s a good chance it will be hidden for you so the first thing to do is show it. Go to the Editor menu and choose Show Document Outline – it’s probably the third option from the top. If you see Hide Document Outline instead, it means the document outline is already visible.
+Le meilleur moyen d’afficher, de sélectionner, de modifier et de supprimer des éléments dans Interface Builder est d’utiliser document outline (structure du document). Toutefois, il est fort probable qu’il soit masqué. La première chose à faire est donc de l’afficher. Dans la barre des menus, cliquez sur Editor puis Show Document Outline (afficher la structure du document) - c’est normalement la troisième option en partant du haut. Si vous voyez à la place Hide Document Outline (Masquer la structure du document), cela signifie qu'elle est déjà visible.
 
-The document outline shows you all the components in all the screens in your storyboard. You should see “View Controller Scene” already in there, so please select it, then press Backspace on your keyboard to remove it.
+La structure du document affiche tous les composants de tous les écrans de votre storyboard. Vous devriez déjà voir "View Controller Scene", alors veuillez le sélectionner puis appuyer sur la touche Backspace de votre clavier pour le supprimer.
 
-Instead of a boring old `UIViewController`, we want a fancy new `UITableViewController` to match the change we made in our code. To create one, press Cmd+Shift+L to show the object library. Alternatively, if you dislike keyboard shortcuts you can go to the View menu and choose Libraries > Show Library instead.
+Au lieu de l'ancien `UIViewController` complètement vide, nous voulons un nouveau `UITableViewController` plus élaboré qui va correspondre aux modifications que nous avons apportées à notre code. Pour en créer un, appuyez sur Cmd + Maj + L pour afficher la bibliothèque d'objets (Object Library). Si vous n'aimez pas les raccourcis clavier, vous pouvez à la place aller dans le menu View et choisir Libraries > Show Library.
 
-The object library floats over the Xcode window, and contains a selection of graphical components that you can drag out and re-arrange to your heart’s content. It contains quite a lot of components, so you might find it useful to enter a few letters into the “Filter” box to slim down the selection.
+La bibliothèque d’objets flotte au-dessus de la fenêtre de Xcode et contient une sélection d'éléments graphiques que vous pouvez faire glisser et réorganiser selon votre envie. Il contient un grand nombre d'éléments, il peut donc être utile de saisir quelques lettres dans le champ de recherche "Objects" pour affiner la sélection.
 
-**Tip:** If you want the object library to remain open after you drag something out, use Alt+Cmd+Shift+L and it will be a movable, resizable window when it appears.
+**Conseil :** Si vous souhaitez que la bibliothèque d'objets reste ouverte après avoir fait glisser quelque chose, appuyez sur les touches Alt + Cmd + Maj + L pour créer une fenêtre amovible et redimensionnable quand elle apparaît à l'écran.
 
-Right now, the component we want is called Table View Controller. If you type “table” into the Filter box you’ll see Table View Controller, Table View, and Table View Cell. They are all different things, so please make sure you choose the Table View Controller – it has a yellow background in its icon.
+Pour le moment, l'élément que nous voulons s'appelle Table View Controller (Contrôleur de vue de type tableau). Si vous tapez "table" dans le champ de recherche, vous verrez Table View Controller, Table View et Table View Cell. Ce sont tous des éléments différentes, alors assurez-vous de choisir Table Vie Controller - il a un fond jaune dans son icône.
 
-Click on the Table View Controller component, then drag it out into the large open space that exists where the previous view controller was. When you let go to drop the table view controller onto the storyboard canvas, it will transform into a screen that looks like the below:
+Cliquez sur Table View Controller, puis faites-le glisser dans le grand espace où se trouvait le contrôleur de vue précédent. Lorsque vous lâchez le contrôleur de vue dans l'espace vide du storyboard. Il se transforme en un écran qui ressemble à ce qui suit :
 
-![Once you’ve deleted the original view controller and replaced it with a new table view controller, Xcode should look like this.](1-20.png)
+![Une fois le contrôleur de vue original supprimé et remplacé par le nouveau Table View Controller, Xcode devrait ressembler à ceci.](1-20.png)
 
 
 ## Finishing touches for the user interface
