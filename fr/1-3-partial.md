@@ -2,68 +2,68 @@
 
 Notre application charge correctement toutes les images de tempête, mais elle ne fait rien d’intéressant avec elles - les afficher dans la console de Xcode est utile pour le débogage, mais je peux vous promettre que ça ne ne fera pas une application que tout le monde a envi d'avoir !
 
-Pour résoudre ce problème, notre prochain objectif est de créer une interface graphique affichant la liste des images afin que les utilisateurs puissent en sélectionner une. UIKit - le framework dédié à l'interface utilisateur d'iOS - dispose de nombreux outils intégrés sur lesquels nous allons pouvoir nous appuyer pour créer des applications puissantes qui ont l'apparence et le fonctionnement auxquels les utilisateurs s'attendent.
+Pour résoudre ce problème, notre prochain objectif est de créer une interface graphique affichant la liste des images afin que les utilisateurs puissent en sélectionner une. UIKit - le framework dédié à l'interface utilisateur d'iOS - dispose de nombreux outils intégrés sur lesquels nous allons pouvoir nous appuyer pour créer des applications évoluées qui ont l'apparence et le fonctionnement auxquels les utilisateurs s'attendent.
 
-Pour cette application, le composant principal de notre interface utilisateur s'appelle `UITableViewController`. Il est basé sur `UIViewController` - le type d’écran de base fourni par Apple - mais qui ajoute la possibilité d’afficher des lignes de données qui pouvent défiler et être sélectionnées. `UITableViewController` est visible dans les applications Réglages, Courrier, Notes, Santé et bien d’autres encore. Il est puissant, flexible et extrêmement rapide. Il n’est donc pas surprenant qu’il soit utilisé dans de nombreuses applications.
+Pour cette application, le composant principal de notre interface utilisateur s'appelle `UITableViewController`. Il est basé sur `UIViewController` - le type d’écran de base fourni par Apple - mais qui ajoute la possibilité d’afficher des lignes de données qui pouvent défiler et être sélectionnées. `UITableViewController` est visible dans les applications Réglages, Mail, Notes, Santé et bien d’autres encore. Il est puissant, flexible et extrêmement rapide. Il n’est donc pas surprenant qu’il soit utilisé dans de nombreuses applications.
 
-Notre écran `ViewController` existant est basé sur `UIViewController`, mais nous souhaitons qu'il soit plutôt basé sur `UITableViewController`. Il n'y a pas grand chose à faire pour cela, mais vous allez découvrir une nouvelle partie de Xcode appelée Interface Builder.
+Notre écran `ViewController` existant est basé sur `UIViewController`, mais nous souhaitons qu'il soit plutôt basé sur `UITableViewController`. Il y a très peu de choses à faire pour cela, mais vous allez découvrir une nouvelle partie de Xcode appelée Interface Builder (le constructeur d'interface).
 
 Nous allons passer à Interface Builder dans un instant. Mais tout d’abord, nous devons apporter un changement minime au fichier ViewController.swift. Trouvez cette ligne:
 
     class ViewController: UIViewController {
 
-C’est la ligne qui dit "crée un nouvel écran appelé` ViewController` et construis-le à partir de `UIViewController`, celui fourni par Apple". Je souhaite que vous modifiez cette ligne comme suit:
+C’est la ligne qui dit "crée un nouvel écran appelé `ViewController` et construis-le à partir de `UIViewController`, l'écran de base fourni par Apple". Je souhaite que vous modifiez cette ligne comme suit:
 
     class ViewController: UITableViewController {
 
-Ce n'est qu'une petite différence, mais elle est importante : cela signifie que "ViewController" hérite désormais des fonctionnalités de "UITableViewController" et non plus de "UIViewController", ce qui nous permet d'accéder à une énorme quantité de fonctionnalités gratuitement, comme vous le verrez dans un instant.
+Ce n'est qu'une petite différence, mais elle est importante : cela signifie que "ViewController" hérite désormais des fonctionnalités de "UITableViewController" et non plus de "UIViewController", ce qui nous permet d'accéder librement à de très nombreuses nouvelles fonctionnalités , comme vous allez le voir dans un instant.
 
 En coulisses, `UITableViewController` est toujours basé sur `UIViewController` - c'est ce qu'on appelle une "hiérarchie de classes" et ça constitue un moyen courant de créer rapidement des fonctionnalités.
 
-Nous avons modifié le code de `ViewController` afin qu'il soit basé sur `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde. Les interfaces graphiques peuvent être écrites entièrement avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé par l'abbréviation "IB") que `ViewController` est un contrôleur d'affichage sous forme de tableau, de sorte qu'il corresponde à la modification que nous venons d'apporter dans notre code.
+Nous avons modifié le code de `ViewController` afin qu'il soit basé sur `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde à ce changement. Les interfaces graphiques peuvent entièrement être écrites avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé "IB") que `ViewController` est un contrôleur de vue sous forme de tableau, de sorte qu'il corresponde à la modification que nous venons d'apporter dans à code.
 
 Jusqu'à présent, nous avons uniquement travaillé dans le fichier ViewController.swift, mais j'aimerais maintenant que vous utilisiez le navigateur de projet (le volet de gauche) pour sélectionner le fichier Main.storyboard. Les storyboards contiennent l'interface utilisateur de votre application et vous permettent de visualiser une partie ou l'intégralité de celle-ci sur un seul écran.
 
 Lorsque vous sélectionnez Main.storyboard, vous passez automatiquement sur Interface Builder et vous devriez voir apparaître l’image ci-dessous :
 
-![The Single View App template gives you one large, empty canvas to draw on.](1-19.png)
+![Le modèle Single View App vous présente un grand espace vide sur lequel dessiner.](1-19.png)
 
-That big white space is what produces the big white space when the app runs. If you drop new components into that space, they would be visible when the app runs. However, we don’t want to do that – in fact, we don’t want that big white space at all, so we’re going to delete it.
+L'écran blanc correspond à celui qui s'affiche dans le simulateur ou un vrai appareil lorsque l'application est exécutée. Si vous déposez de nouveaux composants dans cet écran, ils seront visibles lors de l'exécution de l'application. Cependant, nous ne voulons pas faire cela - en fait, nous ne voulons pas du tout de cet écran, nous allons donc le supprimer.
 
-The best way to view, select, edit, and delete items in Interface Builder is to use the document outline, but there’s a good chance it will be hidden for you so the first thing to do is show it. Go to the Editor menu and choose Show Document Outline – it’s probably the third option from the top. If you see Hide Document Outline instead, it means the document outline is already visible.
+Le meilleur moyen d’afficher, de sélectionner, de modifier et de supprimer des éléments dans Interface Builder est d’utiliser document outline (structure du document). Toutefois, il est fort probable qu’elle soit masquée. La première chose à faire est donc de l’afficher. Dans la barre des menus, cliquez sur Editor puis Show Document Outline (afficher la structure du document) - c’est normalement la troisième option en partant du haut. Si vous voyez à la place Hide Document Outline (Masquer la structure du document), cela signifie qu'elle est déjà visible.
 
-The document outline shows you all the components in all the screens in your storyboard. You should see “View Controller Scene” already in there, so please select it, then press Backspace on your keyboard to remove it.
+La structure du document affiche tous les éléments présents tous les écrans de votre storyboard. Vous devriez déjà voir "View Controller Scene", alors veuillez le sélectionner puis appuyer sur la touche Backspace de votre clavier pour supprimer cet élément.
 
-Instead of a boring old `UIViewController`, we want a fancy new `UITableViewController` to match the change we made in our code. To create one, press Cmd+Shift+L to show the object library. Alternatively, if you dislike keyboard shortcuts you can go to the View menu and choose Libraries > Show Library instead.
+Au lieu de l'ancien `UIViewController` complètement vide, nous voulons un nouveau `UITableViewController` plus élaboré qui va correspondre aux modifications que nous avons apportées à notre code. Pour en créer un, appuyez sur Cmd + Maj + L pour afficher la bibliothèque d'objets (Object Library). Si vous n'aimez pas les raccourcis clavier, vous pouvez à la place aller dans le menu View et choisir Libraries > Show Library.
 
-The object library floats over the Xcode window, and contains a selection of graphical components that you can drag out and re-arrange to your heart’s content. It contains quite a lot of components, so you might find it useful to enter a few letters into the “Filter” box to slim down the selection.
+La bibliothèque d’objets flotte au-dessus de la fenêtre de Xcode et contient une sélection d'éléments graphiques que vous pouvez faire glisser et réorganiser selon votre envie. Il contient un grand nombre d'éléments, il peut donc être utile de saisir quelques lettres dans le champ de recherche "Objects" pour affiner la sélection.
 
-**Tip:** If you want the object library to remain open after you drag something out, use Alt+Cmd+Shift+L and it will be a movable, resizable window when it appears.
+**Conseil :** Si vous souhaitez que la bibliothèque d'objets reste ouverte après avoir fait glisser quelque chose, appuyez sur les touches Alt + Cmd + Maj + L pour créer une fenêtre amovible et redimensionnable quand elle apparaît à l'écran.
 
-Right now, the component we want is called Table View Controller. If you type “table” into the Filter box you’ll see Table View Controller, Table View, and Table View Cell. They are all different things, so please make sure you choose the Table View Controller – it has a yellow background in its icon.
+Pour le moment, l'élément que nous voulons s'appelle Table View Controller (Contrôleur de vue de type tableau). Si vous tapez "table" dans le champ de recherche, vous verrez Table View Controller, Table View et Table View Cell. Ce sont tous des éléments différents, alors assurez-vous de choisir Table View Controller - son icône est identifiable par son fond jaune.
 
-Click on the Table View Controller component, then drag it out into the large open space that exists where the previous view controller was. When you let go to drop the table view controller onto the storyboard canvas, it will transform into a screen that looks like the below:
+Cliquez sur Table View Controller, puis faites-le glisser dans le grand espace où se trouvait le contrôleur de vue précédent. Lorsque vous lâchez le contrôleur de vue dans l'espace vide du storyboard, il se transforme en un écran qui ressemble à ce qui suit :
 
-![Once you’ve deleted the original view controller and replaced it with a new table view controller, Xcode should look like this.](1-20.png)
+![Une fois le contrôleur de vue original supprimé et remplacé par le nouveau Table View Controller, Xcode devrait ressembler à ceci.](1-20.png)
 
 
-## Finishing touches for the user interface
+## Touches finales sur l'interface utilisateur
 
-Before we’re done here, we need to make a few small changes.
+Avant d'en avoir fini avec Interface Builder, nous devons faire quelques petits changements.
 
-First, we need to tell Xcode that this storyboard table view controller is the same one we have in code inside ViewController.swift. To do that, press Alt+Cmd+3 to activate the identity inspector (or go to View > Utilities > Show Identity Inspector), then look at the very top for a box named “Class”. It will have “UITableViewController” written in there in light gray text, but if you click the arrow on its right side you should see a dropdown menu that contains “ViewController” – please select that now.
+Premièrement, nous devons dire à Xcode que le Table View Controller du storyboard est le même que celui que nous avons dans le code du fichier ViewController.swift. Pour ce faire, appuyez sur Alt + Cmd + 3 pour activer Identity Inspector ou, dans la barre des menus, allez dans View > Inspectors > Show Identity Inspector. Recherchez tout en haut la liste déroulante nommée "Class". "UITableViewController" est sélectionné par défaut et est écrit en gris clair. Sélectionnez "ViewController" en cliquant sur la flèche du menu déroulant.
 
-Second, we need to tell Xcode that this new table view controller is what should be shown when the app first runs. To do that, press Alt+Cmd+4 to activate the attributes inspector (or go to View > Utilities > Show Attributes Inspector), then look for the checkbox named “Is Initial View Controller” and make sure it’s checked.
+Deuxièmement, nous devons dire à Xcode que ce Table View Controller est celui qui doit être affiché en premier lorsque l'application est exécutée. Pour ce faire, appuyez sur Alt + Cmd + 4 pour activer Attributes Inspector ou, dans la barre des menus, sélectionnez View > Inspectors > Show Attributes Inspector. Recherchez la case à cocher “Is Initial View Controller” et assurez-vous qu'elle est cochée.
 
-Third, I want you to use the document outline to look inside the new table view controller. Inside you should see it contains a “Table View”, which in turn contains “Cell”. A table view cell is responsible for displaying one row of data in a table, and we’re going to display one picture name in each cell.
+Troisièmement, je veux que vous utilisiez le volet affichant la structure du document (Document Outline) pour regarder à l'intérieur de notre nouveau Table View Controller. À l'intérieur, vous devriez voir qu'il contient l'élément "Table View", qui à son tour contient "Table View Cell". Une cellule est chargée d’afficher une ligne de données dans un tableau et nous allons afficher le nom d'une image dans chaque cellule.
 
-Please select “Cell” then, in the attributes inspector, enter the text “Picture” into the text field marked Identifier. While you’re there, change the Style option at the top of the attributes inspector – it should be Custom right now, but please change it to Basic.
+Veuillez sélectionner "Table View Cell" puis, dans Attributes Inspector, entrez le texte "Picture" dans la zone de texte marquée Identifier. Pendant que vous y êtes, changez l'option Custom du menu déroulant Style situé juste au-dessus en Basic.
 
-Finally, we’re going to place this whole table view controller inside something else. It’s something we don’t need to configure or worry about, but it’s an extremely common user interface element on iOS and I think you’ll recognize it immediately. It’s called a navigation controller, and you see it in action in apps like Settings and Mail – it provides the thin gray bar at the top of the screen, and is responsible for that right-to-left sliding animation that happens when you move between screens on iOS.
+Enfin, nous allons placer le Table View Controller dans un autre contrôleur de vue que nous n’avons pas besoin de configurer et dont nous n'avons pas à nous inquiéter, mais c’est un élément d’interface utilisateur que nous rencontrons fréquemment sur iOS et je pense que vous allez le reconnaître immédiatement. C'est ce qu'on appelle un Navigation Controller (contrôleur de navigation) et vous pouvez le voir en action dans les applications Réglages et Mail. C'est lui qui fournit la fine barre grise en haut de l'écran et est responsable de l'animation qui fait glisser l'écran de droite à gauche qui se produit lorsque vous vous déplacez dans les différents écrans sur iOS.
 
-To place our table view controller into a navigation controller,  all you need to do is go to the Editor menu and choose Embed In > Navigation Controller. Interface Builder will move your existing view controller to the right and add a navigation controller around it – you should see a simulated gray bar above your table view now. It will also move the “Is Initial View Controller” property to the navigation controller.
+Pour placer notre Table View Controller dans un Navigation Controller, il nous suffit d'accéder au menu Editor et de choisir Embed In > Navigation Controller. Interface Builder va déplacer le contrôleur de vue existant vers la droite et ajouter un Navigation Controller juste à côté - vous devriez maintenant voir une barre grise au-dessus de la Table View. Il déplacera également la propriété "Is Initial View Controller" sur le Navigation Controller.
 
-At this point you’ve done enough to take a look at the results of your work: press Xcode’s play button now, or press Cmd+R if you want to feel a bit elite. Once your code runs, you’ll now see the plain white box replaced with a large empty table view. If you click and drag your mouse around, you’ll see it scrolls and bounces as you would expect, although obviously there’s no data in there yet. You should also see a gray navigation bar at the top; that will be important later on.
+À ce stade, vous en avez assez fait pour vouloir jeter un coup d'oeil sur les résultats de votre travail : appuyez maintenant sur le bouton Play de Xcode ou appuyez sur les touches Cmd + R si vous voulez passer pour un pro. Une fois que votre code s'exécute, vous voyez maintenant, à la place de l'écran blanc tout vide, un écran avec une Table View vide. Si vous cliquez et faites glisser votre souris, vous voyez apparaître des bares de défilement et des rebonds comme vous pouvez vous y attendre, même si de toute évidence il n’y a pas encore de données. Vous devriez également voir une barre de navigation grise en haut ; ça sera important pour plus tard.
 
 
 ## Showing lots of rows
