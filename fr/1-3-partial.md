@@ -4,9 +4,9 @@ Notre application charge correctement toutes les images de tempête, mais elle n
 
 Pour résoudre ce problème, notre prochain objectif est de créer une interface graphique affichant la liste des images afin que les utilisateurs puissent en sélectionner une. UIKit - le framework dédié à l'interface utilisateur d'iOS - dispose de nombreux outils intégrés sur lesquels nous allons pouvoir nous appuyer pour créer des applications évoluées qui ont l'apparence et le fonctionnement auxquels les utilisateurs s'attendent.
 
-Pour cette application, le composant principal de notre interface utilisateur s'appelle `UITableViewController`. Il est basé sur `UIViewController` - le type d’écran de base fourni par Apple - mais qui ajoute la possibilité d’afficher des lignes de données qui pouvent défiler et être sélectionnées. `UITableViewController` est visible dans les applications Réglages, Mail, Notes, Santé et bien d’autres encore. Il est puissant, flexible et extrêmement rapide. Il n’est donc pas surprenant qu’il soit utilisé dans de nombreuses applications.
+Pour cette application, le composant principal de notre interface utilisateur s'appelle `UITableViewController`. Il est basé sur `UIViewController` - le type d’écran de base fourni par Apple - mais il ajoute la possibilité d’afficher des données sous forme de tableau, de les faire défiler et les sélectionner. `UITableViewController` est visible dans les applications Réglages, Mail, Notes, Santé et bien d’autres encore. Il est puissant, flexible et extrêmement rapide. Il n’est donc pas surprenant qu’il soit utilisé dans de nombreuses applications.
 
-Notre écran `ViewController` existant est basé sur `UIViewController`, mais nous souhaitons qu'il soit plutôt basé sur `UITableViewController`. Il y a très peu de choses à faire pour cela, mais vous allez découvrir une nouvelle partie de Xcode appelée Interface Builder (le constructeur d'interface).
+Notre écran `ViewController` existant est basé sur `UIViewController`, mais nous souhaitons qu'il soit à la place basé sur `UITableViewController`. Il y a très peu de choses à faire pour cela, mais vous allez découvrir une nouvelle partie de Xcode appelée Interface Builder (le constructeur d'interface).
 
 Nous allons passer à Interface Builder dans un instant. Mais tout d’abord, nous devons apporter un changement minime au fichier ViewController.swift. Trouvez cette ligne:
 
@@ -20,7 +20,7 @@ Ce n'est qu'une petite différence, mais elle est importante : cela signifie que
 
 En coulisses, `UITableViewController` est toujours basé sur `UIViewController` - c'est ce qu'on appelle une "hiérarchie de classes" et ça constitue un moyen courant de créer rapidement des fonctionnalités.
 
-Nous avons modifié le code de `ViewController` afin qu'il hérite de `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde à ce changement. Les interfaces graphiques peuvent entièrement être écrites avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé "IB") que `ViewController` est un contrôleur de vue sous forme de tableau, de sorte qu'il corresponde à la modification que nous venons d'apporter dans à code.
+Nous avons modifié le code de `ViewController` afin qu'il hérite de `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde à ce changement. Les interfaces graphiques peuvent entièrement être écrites avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé "IB") que `ViewController` est un contrôleur de vue sous forme de tableau (UITableViewController), de sorte qu'il corresponde à la modification que nous venons d'apporter dans le code.
 
 Jusqu'à présent, nous avons uniquement travaillé dans le fichier ViewController.swift, mais j'aimerais maintenant que vous utilisiez le navigateur de projet (le volet de gauche) pour sélectionner le fichier Main.storyboard. Les storyboards contiennent l'interface utilisateur de votre application et vous permettent de visualiser une partie ou l'intégralité de celle-ci sur un seul écran.
 
@@ -28,26 +28,26 @@ Lorsque vous sélectionnez Main.storyboard, vous passez automatiquement sur Inte
 
 ![Le modèle Single View App vous présente un grand espace vide sur lequel dessiner.](1-19.png)
 
-L'écran blanc correspond à celui qui s'affiche dans le simulateur ou un vrai appareil lorsque l'application est exécutée. Si vous déposez de nouveaux composants dans cet écran, ils seront visibles lors de l'exécution de l'application. Cependant, nous ne voulons pas faire cela - en fait, nous ne voulons pas du tout de cet écran, nous allons donc le supprimer.
+L'écran blanc correspond à celui qui s'affiche dans le simulateur ou sur un iPhone ou un iPad lorsque l'application est exécutée. Si vous déposez de nouveaux composants dans cet écran, ils seront visibles lors de l'exécution de l'application. Cependant, nous ne voulons pas faire cela - en fait, nous ne voulons pas du tout de cet écran, nous allons donc le supprimer.
 
-Le meilleur moyen d’afficher, de sélectionner, de modifier et de supprimer des éléments dans Interface Builder est d’utiliser document outline (structure du document). Toutefois, il est fort probable qu’elle soit masquée. La première chose à faire est donc de l’afficher. Dans la barre des menus, cliquez sur Editor puis Show Document Outline (afficher la structure du document) - c’est normalement la troisième option en partant du haut. Si vous voyez à la place Hide Document Outline (Masquer la structure du document), cela signifie qu'elle est déjà visible.
+Le meilleur moyen d’afficher, de sélectionner, de modifier et de supprimer des éléments dans Interface Builder est d’utiliser le volet document outline (structure du document). Toutefois, il est fort probable qu’il soit masqué. La première chose à faire est donc de l’afficher. Dans la barre des menus, cliquez sur Editor puis Show Document Outline (afficher la structure du document) - c’est normalement la troisième option en partant du haut. Si vous voyez à la place Hide Document Outline (Masquer la structure du document), cela signifie que le volet est déjà affiché à l'écran.
 
-La structure du document affiche tous les éléments présents tous les écrans de votre storyboard. Vous devriez déjà voir "View Controller Scene", alors veuillez le sélectionner puis appuyer sur la touche Backspace de votre clavier pour supprimer cet élément.
+La structure du document affiche tous les éléments présents dans tous les écrans de votre storyboard. Vous devriez déjà voir "View Controller Scene", alors veuillez le sélectionner puis appuyer sur la touche Backspace de votre clavier pour supprimer cet élément.
 
 Au lieu de l'ancien `UIViewController` complètement vide, nous voulons un nouveau `UITableViewController` plus élaboré qui va correspondre aux modifications que nous avons apportées à notre code. Pour en créer un, appuyez sur Cmd + Maj + L pour afficher la bibliothèque d'objets (Object Library). Si vous n'aimez pas les raccourcis clavier, vous pouvez à la place aller dans le menu View et choisir Libraries > Show Library.
 
 La bibliothèque d’objets flotte au-dessus de la fenêtre de Xcode et contient une sélection d'éléments graphiques que vous pouvez faire glisser et réorganiser selon votre envie. Il contient un grand nombre d'éléments, il peut donc être utile de saisir quelques lettres dans le champ de recherche "Objects" pour affiner la sélection.
 
-**Conseil :** Si vous souhaitez que la bibliothèque d'objets reste ouverte après avoir fait glisser quelque chose, appuyez sur les touches Alt + Cmd + Maj + L pour créer une fenêtre amovible et redimensionnable quand elle apparaît à l'écran.
+**Conseil :** Si vous souhaitez que la bibliothèque d'objets reste ouverte après avoir fait glisser un élement, appuyez sur les touches Alt + Cmd + Maj + L pour créer une fenêtre amovible et redimensionnable quand elle apparaît à l'écran.
 
-Pour le moment, l'élément que nous voulons s'appelle Table View Controller (Contrôleur de vue de type tableau). Si vous tapez "table" dans le champ de recherche, vous verrez Table View Controller, Table View et Table View Cell. Ce sont tous des éléments différents, alors assurez-vous de choisir Table View Controller - son icône est identifiable par son fond jaune.
+Pour le moment, l'élément que nous souhaitons ajouter à notre storyboard s'appelle Table View Controller (Contrôleur de vue de type tableau). Si vous tapez "table" dans le champ de recherche, vous verrez Table View Controller, Table View et Table View Cell. Ce sont tous des éléments différents, alors assurez-vous de choisir Table View Controller - son icône est identifiable par son fond jaune.
 
 Cliquez sur Table View Controller, puis faites-le glisser dans le grand espace où se trouvait le contrôleur de vue précédent. Lorsque vous lâchez le contrôleur de vue dans l'espace vide du storyboard, il se transforme en un écran qui ressemble à ce qui suit :
 
 ![Une fois le contrôleur de vue original supprimé et remplacé par le nouveau Table View Controller, Xcode devrait ressembler à ceci.](1-20.png)
 
 
-## Touches finales sur l'interface utilisateur
+## Touches finales de l'interface utilisateur
 
 Avant d'en avoir fini avec Interface Builder, nous devons faire quelques petits changements.
 
@@ -55,7 +55,7 @@ Premièrement, nous devons dire à Xcode que le Table View Controller du storybo
 
 Deuxièmement, nous devons dire à Xcode que ce Table View Controller est celui qui doit être affiché en premier lorsque l'application est exécutée. Pour ce faire, appuyez sur Alt + Cmd + 4 pour activer Attributes Inspector ou, dans la barre des menus, sélectionnez View > Inspectors > Show Attributes Inspector. Recherchez la case à cocher “Is Initial View Controller” et assurez-vous qu'elle est cochée.
 
-Troisièmement, je veux que vous utilisiez le volet affichant la structure du document (Document Outline) pour regarder à l'intérieur de notre nouveau Table View Controller. À l'intérieur, vous devriez voir qu'il contient l'élément "Table View", qui à son tour contient "Table View Cell". Une cellule est chargée d’afficher une ligne de données dans un tableau et nous allons afficher le nom d'une image dans chaque cellule.
+Troisièmement, je veux que vous utilisiez le volet affichant la structure du document (Document Outline) pour regarder à l'intérieur de notre nouveau Table View Controller. Vous devriez voir qu'il contient l'élément "Table View" (vue affichant un tableau), qui à son tour contient "Table View Cell" (cellule). Une cellule est chargée d’afficher une ligne de données dans un tableau et nous allons afficher le nom d'une image dans chaque cellule.
 
 Veuillez sélectionner "Table View Cell" puis, dans Attributes Inspector, entrez le texte "Picture" dans la zone de texte marquée Identifier. Pendant que vous y êtes, changez l'option Custom du menu déroulant Style situé juste au-dessus en Basic.
 
@@ -63,7 +63,7 @@ Enfin, nous allons placer le Table View Controller dans un autre contrôleur de 
 
 Pour placer notre Table View Controller dans un Navigation Controller, il nous suffit d'accéder au menu Editor et de choisir Embed In > Navigation Controller. Interface Builder va déplacer le contrôleur de vue existant vers la droite et ajouter un Navigation Controller juste à côté - vous devriez maintenant voir une barre grise au-dessus de la Table View. Il déplacera également la propriété "Is Initial View Controller" sur le Navigation Controller.
 
-À ce stade, vous en avez assez fait pour vouloir jeter un coup d'oeil sur les résultats de votre travail : appuyez maintenant sur le bouton Play de Xcode ou appuyez sur les touches Cmd + R si vous voulez passer pour un pro. Une fois que votre code s'exécute, vous voyez maintenant, à la place de l'écran blanc tout vide, un écran avec une Table View vide. Si vous cliquez et faites glisser votre souris, vous voyez apparaître des bares de défilement et des rebonds comme vous pouvez vous y attendre, même si de toute évidence il n’y a pas encore de données. Vous devriez également voir une barre de navigation grise en haut ; ça sera important pour plus tard.
+À ce stade, vous en avez assez fait pour vouloir jeter un coup d'oeil sur les résultats de votre travail : appuyez maintenant sur le bouton Play de Xcode ou appuyez sur les touches Cmd + R si vous voulez passer pour un pro. Une fois que votre code s'exécute, vous voyez maintenant, à la place de l'écran tout blanc et vide, un écran avec un tableau vide. Si vous cliquez et faites glisser votre souris, vous voyez apparaître des bares de défilement et des rebonds comme vous pouvez vous y attendre, même si de toute évidence il n’y a pas encore de données. Vous devriez également voir une barre de navigation grise en haut ; ça sera important pour plus tard.
 
 
 ## Afficher des lignes
@@ -84,20 +84,20 @@ Note : cette méthose doit se trouver *après* la *fin* de `viewDidLoad()`, ce q
 
 Cette méthode contient trois fois le mot "tableViev", ce qui est plutôt déroutant au début, alors détaillons ce que cela signifie.
 
--   Le mot clé `override` signifie que la méthode a déjà été définie et que nous voulons remplacer le comportement existant par un nouveau. Si vous ne la remplacez pas, la méthode par défaut sera exécutée et dans ce cas, il sera indiqué qu'il n'y a pas de lignes.
--   Le mot clé `func` indique le début d'une nouvelle fonction ou d'une nouvelle méthode ; Swift utilise le même mot clé pour les deux. Techniquement, une méthode est une fonction qui apparaît à l'intérieur d'une classe, tout comme notre `ViewController`, mais sinon il n’ya pas de différence.
--   Le nom de la méthode vient ensuite: `tableView`. Cela ne semble pas très utile, mais la façon dont Apple définit ses méthodes a pour but de garantir que les informations qui leur sont transmises - les paramètres - sont nommés de manière cohérente. Dans ce cas, la première chose qui est transmise est la Table View qui a déclenché le code. Comme vous l'avez peut-être compris, une Table View correspond à un tableau, celui qui va contenir tous les noms de nos images et dont nous pourrons faire défiler le contenu, et qui constitue un composant essentiel d'iOS.
--   Comme promis, l'étape suivante est `tableView: UITableView`, qui est la tTable View qui a déclenché le code. Nous observons que ce paramètre contient deux informations à la fois : `tableView` qui est le nom que nous pouvons utiliser pour référencer le tableau dans la méthode, et `UITableView` qui correspons à son type de données - qui décrit ce que c'est.
--   Vient ensuite la partie la plus importante de la méthode : `numberOfRowsInSection section: Int`. Ceci décrit ce que fait réellement la méthode. Nous savons qu'elle inclut une Table View car c'est le nom de la méthode, mais la partie `numberOfRowsInSection` est l'action réelle : ce code sera déclenché lorsqu'iOS voudra savoir combien de lignes se trouvent dans le tableau. La partie `section` est présente car les tableaux peuvent être divisés en sections, comme l'application Contacts qui sépare les noms par leur première lettre. Nous n’avons qu’une section, donc nous n'avons pas besoin de modifier la méthode définissant le nombre de sections dans notre tableau. La partie "Int" précise que "ce paramètre doit être un entier", ce qui signifie un nombre entier comme 3, 30 ou 35678 ".
+-   Le mot clé `override` signifie que la méthode a déjà été définie et que nous voulons modifier le comportement existant par un nouveau. Si vous ne la modifiez pas, la méthode par défaut sera exécutée et dans ce cas, il sera indiqué qu'il n'y a pas de lignes.
+-   Le mot clé `func` indique le début d'une nouvelle fonction ou d'une nouvelle méthode ; Swift utilise le même mot clé pour les deux. Techniquement, une méthode est une fonction qui apparaît à l'intérieur d'une classe, tout comme notre `ViewController`, mais sinon il n’y a pas de différences.
+-   Le nom de la méthode vient ensuite: `tableView`. Cela ne semble pas très utile, mais la façon dont Apple définit le nom de ses méthodes a pour but de garantir que les informations qui leur sont transmises - les paramètres - sont nommés de manière cohérente. Dans ce cas, la première chose qui est transmise est la Table View qui a déclenché le code. Comme vous l'avez peut-être compris, une Table View correspond à un tableau, celui qui va contenir tous les noms de nos images dans notre projet et dont nous pourrons faire défiler le contenu, et qui constitue un composant essentiel d'iOS.
+-   Comme promis, l'étape suivante est `tableView: UITableView`, qui est la Table View qui a déclenché le code. Nous observons que ce paramètre contient deux informations à la fois : `tableView` qui est le nom que nous pouvons utiliser pour référencer le tableau dans la méthode, et `UITableView` qui correspons à son type de données - qui décrit ce que c'est.
+-   Vient ensuite la partie la plus importante de la méthode : `numberOfRowsInSection section: Int`. Ceci décrit ce que fait réellement la méthode. Nous savons qu'elle inclut une Table View car c'est le nom de la méthode, mais la partie `numberOfRowsInSection` est l'action réelle : ce code sera déclenché lorsqu'iOS voudra savoir combien de lignes se trouvent dans le tableau. La partie `section` est présente car les tableaux peuvent être divisés en sections, comme l'application Contacts qui sépare les noms par leur première lettre. Nous n’avons qu’une section, donc nous pouvons ignorer ce paramètre. La partie "Int" précise que "ce paramètre doit être un entier", ce qui signifie un nombre entier comme 3, 30 ou 35678 ".
 -   Enfin, `-> Int` signifie que “cette méthode doit retourner un entier”, qui devrait être le nombre de lignes à afficher dans le tableau.
 
-Il me manque encore une chose à vous expliquer : c’est un peu déroutant à ce stade de votre parcours en Swift. Avez-vous remarqué le `_`? C’est le signe underscore. Cela change la façon dont la méthode est appelée. Pour illustrer cela, voici une fonction très simple:
+Il me manque encore une chose à vous expliquer : c’est un peu déroutant à ce stade de votre parcours en Swift. Avez-vous remarqué le `_` ? C’est le signe underscore. Cela change la façon dont la méthode est appelée. Pour illustrer cela, voici une fonction très simple :
 
     func doStuff(thing: String) {
         // do stuff with "thing"
     }
 
-Elle est vide parce que son contenu n’a pas d’importance. Au lieu de cela, concentrons-nous sur la façon dont elle est appeleé. Pour le moment, il faut l'appeler comme ça:
+Elle est vide parce que son contenu n’a pas d’importance. Au lieu de cela, concentrons-nous sur la façon dont elle est appelée. Pour le moment, il faut l'appeler comme ça :
 
     doStuff(thing: "Hello")
 
@@ -109,15 +109,15 @@ Lorsque cela se produit, vous utilisez le signe underscore comme ceci :
         // do stuff with "thing"
     }
 
-Cela signifie "quand j'appelle cette fonction, je ne veux pas écrire `thing`, mais à l'intérieur de la fonction, je veux utiliser `thing` pour faire référence à la valeur qui a été transmise.
+Cela signifie "quand j'appelle cette fonction, je ne veux pas écrire `thing`, mais à l'intérieur de la fonction, je veux utiliser `thing` pour faire référence à la valeur qu'il a transmise.
 
 C’est ce qui se passe avec notre méthode table view. La méthode s'appelle `tableView()` car son premier paramètre est la Table View avec laquelle vous travaillez. Cela n’aurait pas beaucoup de sens d’écrire `tableView(tableView: someTableView)`, aussi utiliser un underscore signifie que l'on peut plutôt écrire `tableView(someTableView)`.
 
-Je ne vais pas prétendre qu'il est facile de comprendre à quoi ressemblent les méthodes en Swift et comment elles fonctionnenet, mais la meilleure chose à faire est de ne pas trop vous inquiéter si vous n'avez pas compris pas pour le moment, car après quelques heures passées à écrire du code, ça deviendra naturel.
+Je ne vais pas prétendre que c'est facile de comprendre à quoi ressemblent les méthodes en Swift et comment elles fonctionnent, mais la meilleure chose à faire est de ne pas trop vous inquiéter si vous n'avez pas compris pour le moment, car après quelques heures passées à écrire du code, ça deviendra naturel.
 
-Au minimum, vous devez savoir que ces méthodes sont identifiées par leur nom (`tableView`) et les noms de leur(s) paramètre()s. Les paramètres sans nom sont simplement déclarés avec un underscore : `_`. Donc, pour lui donner son nom complet, la méthode que vous venez d'écrire s'appelle `tableView (_: numberOfRowsInSection:)` - pas très bien conçu je sais, c'est pourquoi la plupart des gens ne parlent habituellement que de la partie importante, par exemple "la méthode `numberOfRowsInSection`."
+Au minimum, vous devez savoir que ces méthodes sont identifiées par leur nom (`tableView`) et les noms de leur(s) paramètre()s. Les paramètres sans nom sont simplement déclarés avec un underscore : `_`. Donc, pour lui donner son nom complet, la méthode que vous venez d'écrire s'appelle `tableView (_: numberOfRowsInSection:)` - pas facile à lire je sais, c'est pourquoi la plupart des gens ne parlent habituellement que de la partie importante, par exemple "la méthode `numberOfRowsInSection`."
 
-Nous n'avons écrit qu'une seule ligne de code dans la méthode, qui était `return pictures.count`. Cela signifie "retourne le nombre d'images contenues dans notre Array `picures`", nous demandons donc qu'il y ait autant de lignes que de photos dans le tableau.
+Nous n'avons écrit qu'une seule ligne de code dans la méthode, qui était `return pictures.count`. Cela signifie "retourne le nombre d'images contenues dans notre Array `pictures`", nous demandons donc que notre tbleau retourne autant de lignes qu'il y a de photos.
 
 
 ## Dequeuing cells
