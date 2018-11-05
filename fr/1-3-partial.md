@@ -20,7 +20,7 @@ Ce n'est qu'une petite différence, mais elle est importante : cela signifie que
 
 En coulisses, `UITableViewController` est toujours basé sur `UIViewController` - c'est ce qu'on appelle une "hiérarchie de classes" et ça constitue un moyen courant de créer rapidement des fonctionnalités.
 
-Nous avons modifié le code de `ViewController` afin qu'il soit basé sur `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde à ce changement. Les interfaces graphiques peuvent entièrement être écrites avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé "IB") que `ViewController` est un contrôleur de vue sous forme de tableau, de sorte qu'il corresponde à la modification que nous venons d'apporter dans à code.
+Nous avons modifié le code de `ViewController` afin qu'il hérite de `UITableViewController`, mais nous devons également modifier l'interface utilisateur pour qu'elle corresponde à ce changement. Les interfaces graphiques peuvent entièrement être écrites avec du code si vous le désirez - et de nombreux développeurs le font - mais elles sont généralement créées à l'aide d'un éditeur graphique appelé Interface Builder. Nous devons dire à Interface Builder (généralement appelé "IB") que `ViewController` est un contrôleur de vue sous forme de tableau, de sorte qu'il corresponde à la modification que nous venons d'apporter dans à code.
 
 Jusqu'à présent, nous avons uniquement travaillé dans le fichier ViewController.swift, mais j'aimerais maintenant que vous utilisiez le navigateur de projet (le volet de gauche) pour sélectionner le fichier Main.storyboard. Les storyboards contiennent l'interface utilisateur de votre application et vous permettent de visualiser une partie ou l'intégralité de celle-ci sur un seul écran.
 
@@ -66,58 +66,58 @@ Pour placer notre Table View Controller dans un Navigation Controller, il nous s
 À ce stade, vous en avez assez fait pour vouloir jeter un coup d'oeil sur les résultats de votre travail : appuyez maintenant sur le bouton Play de Xcode ou appuyez sur les touches Cmd + R si vous voulez passer pour un pro. Une fois que votre code s'exécute, vous voyez maintenant, à la place de l'écran blanc tout vide, un écran avec une Table View vide. Si vous cliquez et faites glisser votre souris, vous voyez apparaître des bares de défilement et des rebonds comme vous pouvez vous y attendre, même si de toute évidence il n’y a pas encore de données. Vous devriez également voir une barre de navigation grise en haut ; ça sera important pour plus tard.
 
 
-## Showing lots of rows
+## Afficher des lignes
 
-The next step is to make the table view show some data. Specifically, we want it to show the list of “nssl” pictures, one per row. Apple’s `UITableViewController` data type provides default behaviors for a lot of things, but by default it says there are zero rows.
+L'étape suivante consiste à faire apparaître des données dans notre tableau. Plus précisément, nous souhaitons qu’il affiche la liste des images "nssl" - un nom d'image par ligne. Le type de données `UITableViewController` fourni par Apple propose des comportements par défaut pour beaucoup de choses, mais il indique qu'il n'y a aucune ligne dans le tableau.
 
-Our `ViewController` screen builds on `UITableViewController` and gets to override the default behavior of Apple’s table view to provide customization where needed. You only need to override the bits you want; the default values are all sensible.
+Notre écran `ViewController` hérite de `UITableViewController` et permet d'outre passer le comportement par défaut de la Table View fournie par Apple et ainsi la personnaliser quand cela est nécessaire. Vous avez seulement besoin de remplacer les morceaux de codes que vous souhaitez.
 
-To make the table show our rows, we need to override two behaviors: how many rows should be shown, and what each row should contain. This is done by writing two specially named methods, but when you’re new to Swift they might look a little strange at first. To make sure everyone can follow along, I’m going to take this slowly – this is the very first project, after all!
+Pour que le tableau affiche nos lignes, nous devons redéfinir deux comportements : le nombre de lignes à afficher et le contenu de chacune d'elles. Cela se fait en écrivant deux méthodes portant un nom bien spécifique, mais quand vous êtes nouveau en Swift, elles peuvent paraître un peu étranges la première fois que vous les voyez. Pour que tout le monde puisse suivre, je vais y aller doucement - ce n’est que le tout premier projet après tout !
 
-Let’s start with the method that sets how many rows should appear in the table. Add this code just after the *end* of `viewDidLoad()` – if you start typing “numberof” then you can use Xcode’s code completion to do most of the work for you:
+Commençons par la méthode qui définit le nombre de lignes devant apparaître dans le tableau. Ajoutez ce code juste après la *fin* de la méthode `viewDidLoad()` - si vous commencez à taper "numberof", vous pouvez alors utiliser la complétion automatique de code de Xcode pour effectuer la majeure partie du travail à votre place :
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
     }
 
-Note: that needs to be *after* the *end* of `viewDidLoad()`, which means after its closing brace.
+Note : cette méthose doit se trouver *après* la *fin* de `viewDidLoad()`, ce qui signifie après son accolade fermante.
 
-That method contains the word “table view” three times, which is deeply confusing at first, so let’s break down what it means.
+Cette méthode contient trois fois le mot "tableViev", ce qui est plutôt déroutant au début, alors détaillons ce que cela signifie.
 
--   The `override` keyword means the method has been defined already, and we want to override the existing behavior with this new behavior. If you didn't override it, then the previously defined method would execute, and in this instance it would say there are no rows.
--   The `func` keyword starts a new function or a new method; Swift uses the same keyword for both. Technically speaking a method is a function that appears inside a class, just like our `ViewController`, but otherwise there’s no difference.
--   The method’s name comes next: `tableView`. That doesn't sound very useful, but the way Apple defines methods is to ensure that the information that gets passed into them – the parameters – are named usefully, and in this case the very first thing that gets passed in is the table view that triggered the code. A table view, as you might have gathered, is the scrolling thing that will contain all our image names, and is a core component in iOS.
--   As promised, the next thing to come is `tableView: UITableView`, which is the table view that triggered the code. But this contains two pieces of information at once: `tableView` is the name that we can use to reference the table view inside the method, and `UITableView` is the data type – the bit that describes what it is.
--   The most important part of the method comes next: `numberOfRowsInSection section: Int`. This describes what the method actually does. We know it involves a table view because that's the name of the method, but the `numberOfRowsInSection` part is the actual action: this code will be triggered when iOS wants to know how many rows are in the table view. The `section` part is there because table views can be split into sections, like the way the Contacts app separates names by first letter. We only have one section, so we can ignore this number. The `Int` part means “this will be an integer,” which means a whole number like 3, 30, or 35678 number.”
--   Finally, `-> Int` means “this method must return an integer”, which ought to be the number of rows to show in the table.
+-   Le mot clé `override` signifie que la méthode a déjà été définie et que nous voulons remplacer le comportement existant par un nouveau. Si vous ne la remplacez pas, la méthode par défaut sera exécutée et dans ce cas, il sera indiqué qu'il n'y a pas de lignes.
+-   Le mot clé `func` indique le début d'une nouvelle fonction ou d'une nouvelle méthode ; Swift utilise le même mot clé pour les deux. Techniquement, une méthode est une fonction qui apparaît à l'intérieur d'une classe, tout comme notre `ViewController`, mais sinon il n’ya pas de différence.
+-   Le nom de la méthode vient ensuite: `tableView`. Cela ne semble pas très utile, mais la façon dont Apple définit ses méthodes a pour but de garantir que les informations qui leur sont transmises - les paramètres - sont nommés de manière cohérente. Dans ce cas, la première chose qui est transmise est la Table View qui a déclenché le code. Comme vous l'avez peut-être compris, une Table View correspond à un tableau, celui qui va contenir tous les noms de nos images et dont nous pourrons faire défiler le contenu, et qui constitue un composant essentiel d'iOS.
+-   Comme promis, l'étape suivante est `tableView: UITableView`, qui est la tTable View qui a déclenché le code. Nous observons que ce paramètre contient deux informations à la fois : `tableView` qui est le nom que nous pouvons utiliser pour référencer le tableau dans la méthode, et `UITableView` qui correspons à son type de données - qui décrit ce que c'est.
+-   Vient ensuite la partie la plus importante de la méthode : `numberOfRowsInSection section: Int`. Ceci décrit ce que fait réellement la méthode. Nous savons qu'elle inclut une Table View car c'est le nom de la méthode, mais la partie `numberOfRowsInSection` est l'action réelle : ce code sera déclenché lorsqu'iOS voudra savoir combien de lignes se trouvent dans le tableau. La partie `section` est présente car les tableaux peuvent être divisés en sections, comme l'application Contacts qui sépare les noms par leur première lettre. Nous n’avons qu’une section, donc nous n'avons pas besoin de modifier la méthode définissant le nombre de sections dans notre tableau. La partie "Int" précise que "ce paramètre doit être un entier", ce qui signifie un nombre entier comme 3, 30 ou 35678 ".
+-   Enfin, `-> Int` signifie que “cette méthode doit retourner un entier”, qui devrait être le nombre de lignes à afficher dans le tableau.
 
-There was one more thing I missed out, and I missed it out for a reason: it’s a bit confusing at this point in your Swift career. Did you notice that `_` in there? That’s an underscore. It changes the way the method is called. To illustrate this, here’s a very simple function:
+Il me manque encore une chose à vous expliquer : c’est un peu déroutant à ce stade de votre parcours en Swift. Avez-vous remarqué le `_`? C’est le signe underscore. Cela change la façon dont la méthode est appelée. Pour illustrer cela, voici une fonction très simple:
 
     func doStuff(thing: String) {
         // do stuff with "thing"
     }
 
-It’s empty, because its contents don’t matter. Instead, let’s focus on how it’s called. Right now, it’s called like this:
+Elle est vide parce que son contenu n’a pas d’importance. Au lieu de cela, concentrons-nous sur la façon dont elle est appeleé. Pour le moment, il faut l'appeler comme ça:
 
     doStuff(thing: "Hello")
 
-You need to write the name of the `thing` parameter when you call the `doStuff()` function. This is a feature of Swift, and helps make your code easier to read. Sometimes, though, it doesn’t really make sense to have a name for the first parameter, usually because it’s built into the method name.
+Vous devez obligatoirement écrire le nom du paramètre `thing` lorsque vous appelez la fonction `doStuff()`. Ceci est une fonctionnalité de Swift et contribue à rendre votre code plus facile à lire. Cependant, il n’y a parfois pas vraiment d'intérêt de donner un nom au premier paramètre, généralement parce qu’il est intégré au nom de la méthode.
 
-When that happens, you use the underscore character like this:
+Lorsque cela se produit, vous utilisez le signe underscore comme ceci :
 
     func doStuff(_ thing: String) {
         // do stuff with "thing"
     }
 
-That means “when I call this function I don’t want to write `thing`, but inside the function I want to use `thing` to refer to the value that was passed in.
+Cela signifie "quand j'appelle cette fonction, je ne veux pas écrire `thing`, mais à l'intérieur de la fonction, je veux utiliser `thing` pour faire référence à la valeur qui a été transmise.
 
-This is what’s happening with our table view method. The method is called `tableView()` because its first parameter is the table view that you’re working with. It wouldn’t make much sense to write `tableView(tableView: someTableView)`, so using the underscore means you would write `tableView(someTableView)` instead.
+C’est ce qui se passe avec notre méthode table view. La méthode s'appelle `tableView()` car son premier paramètre est la Table View avec laquelle vous travaillez. Cela n’aurait pas beaucoup de sens d’écrire `tableView(tableView: someTableView)`, aussi utiliser un underscore signifie que l'on peut plutôt écrire `tableView(someTableView)`.
 
-I'm not going to pretend it's easy to understand how Swift methods look and work, but the best thing to do is not worry too much if you don't understand right now because after a few hours of coding they will be second nature.
+Je ne vais pas prétendre qu'il est facile de comprendre à quoi ressemblent les méthodes en Swift et comment elles fonctionnenet, mais la meilleure chose à faire est de ne pas trop vous inquiéter si vous n'avez pas compris pas pour le moment, car après quelques heures passées à écrire du code, ça deviendra naturel.
 
-At the very least you do need to know that these methods are referred to using their name (`tableView`) and any named parameters. Parameters without names are just referenced as underscores: `_`. So, to give it its full name, the method you just wrote is referred to as `tableView(_:numberOfRowsInSection:)` – clumsy, I know, which is why most people usually just talk about the important bit, for example, "in the `numberOfRowsInSection` method."
+Au minimum, vous devez savoir que ces méthodes sont identifiées par leur nom (`tableView`) et les noms de leur(s) paramètre()s. Les paramètres sans nom sont simplement déclarés avec un underscore : `_`. Donc, pour lui donner son nom complet, la méthode que vous venez d'écrire s'appelle `tableView (_: numberOfRowsInSection:)` - pas très bien conçu je sais, c'est pourquoi la plupart des gens ne parlent habituellement que de la partie importante, par exemple "la méthode `numberOfRowsInSection`."
 
-We wrote only one line of code in the method, which was `return pictures.count`. That means “send back the number of pictures in our array,” so we’re asking that there be as many table rows as there are pictures.
+Nous n'avons écrit qu'une seule ligne de code dans la méthode, qui était `return pictures.count`. Cela signifie "retourne le nombre d'images contenues dans notre Array `picures`", nous demandons donc qu'il y ait autant de lignes que de photos dans le tableau.
 
 
 ## Dequeuing cells
