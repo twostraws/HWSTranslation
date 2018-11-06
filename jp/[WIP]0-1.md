@@ -4,7 +4,8 @@ XcodeはAppleの開発者用プログラミングアプリケーションです�
 
 - **iOS** はすべてのiPhoneとiPadで動作するオペレーティングシステムの名前です。 電話の基本操作、電話の発信、画面の描画、アプリの実行などを担当します。
 - **macOS** はiOS、tvOS、さらにはwatchOSの技術的な基礎であるAppleのデスクトップオペレーティングシステムの名前です。
-- **watchOS**はAppleの最も小さなオペレーティングシステムの名前で、ネイティブアプリの実行と電話からの通知の配信を担当します。- **Swift** is Apple's modern programming language that lets you write apps for iOS, macOS, and other platforms. It contains the functionality for building programs, but doesn't handle anything like user interfaces, audio or networking.
+- **watchOS** はAppleの最も小さなオペレーティングシステムの名前で、ネイティブアプリの実行と電話からの通知の配信を担当します。
+- **Swift** is Apple's modern programming language that lets you write apps for iOS, macOS, and other platforms. It contains the functionality for building programs, but doesn't handle anything like user interfaces, audio or networking.
 - **Swift 1.2** was the first major update to Swift, tweaking various language features and improving others.
 - **Swift 2** was the second major update to Swift, introducing checked exceptions, and many other major improvements.
 - **Swift 2.2** was a minor update to Swift 2.0, deprecating some syntax ahead of its removal in Swift 3.
