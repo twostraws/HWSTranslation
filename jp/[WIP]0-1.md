@@ -2,8 +2,8 @@
 
 XcodeはAppleの開発者用プログラミングアプリケーションです。 これは、Mac App Storeから無料で入手でき、Appleのプラットフォーム用に開発を行うために必要です。 だから、最初のアクションは[Mac App StoreからXcodeをインストールするにはここをクリック](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&at=10l8cn&ct=hws) です。これはかなりの 大きなダウンロードのため、まずダウンロードを開始し、読書を続けて下さい。ダウンロードされている間、絶対的な基本をいくつか説明します：
 
-- ** iOS **はすべてのiPhoneとiPadで動作するオペレーティングシステムの名前です。 電話の基本操作、電話の発信、画面の描画、アプリの実行などを担当します。
-- ** macOS **はiOS、tvOS、さらにはwatchOSの技術的な基礎であるAppleのデスクトップオペレーティングシステムの名前です。
+- ** iOS ** はすべてのiPhoneとiPadで動作するオペレーティングシステムの名前です。 電話の基本操作、電話の発信、画面の描画、アプリの実行などを担当します。
+- ** macOS ** はiOS、tvOS、さらにはwatchOSの技術的な基礎であるAppleのデスクトップオペレーティングシステムの名前です。
 - **watchOS** is the name for Apple’s tiniest operating system, and is responsible for running native apps and also delivering notifications from the phone.
 - **Swift** is Apple's modern programming language that lets you write apps for iOS, macOS, and other platforms. It contains the functionality for building programs, but doesn't handle anything like user interfaces, audio or networking.
 - **Swift 1.2** was the first major update to Swift, tweaking various language features and improving others.
