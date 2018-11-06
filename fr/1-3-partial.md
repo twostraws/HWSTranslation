@@ -120,9 +120,9 @@ Au minimum, vous devez savoir que ces méthodes sont identifiées par leur nom (
 Nous n'avons écrit qu'une seule ligne de code dans la méthode, qui était `return pictures.count`. Cela signifie "retourne le nombre d'images contenues dans notre Array `pictures`", nous demandons donc que notre tbleau retourne autant de lignes qu'il y a de photos.
 
 
-## Dequeuing cells
+## Cellules en attente
 
-That’s the first of two methods we need to write to complete this stage of the app. The second is to specify what each row should look like, and it follows a similar naming convention to the previous method. Add this code now:
+Alors que la première méthode permettait de déterminer le nombre de lignes à afficher dans le tableau, la seconde consiste à spécifier à quoi chaque cellule devrait ressembler. Elle suit une convention de nommage similaire à celle de la méthode précédente. Ajoutez ce code maintenant:
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
@@ -130,32 +130,32 @@ That’s the first of two methods we need to write to complete this stage of the
         return cell
     }
 
-Let’s break it down into parts again, so you can see exactly how it works.
+Décomposons-le à nouveau en plusieurs parties pour que vous puissiez voir exactement comment tout cela fonctionne.
 
-First, `override func tableView(_ tableView: UITableView` is identical to the previous method: the method name is just `tableView()`, and it will pass in a table view as its first parameter. The `_` means it doesn’t need to have a name sent externally, because it’s the same as the method name.
+Tout d’abord, `override func tableView(_ tableView: UITableView` est identique à la méthode précédente : le nom de la méthode est simplement `tableView()`, et son premier paramètre est une Table View. Le `_` signifie qu'on n'a pas besoin de le nommer lorsque l'on appelle cette méthode, car il aurait le même nom que celle-ci.
 
-Second, `cellForRowAt indexPath: IndexPath` is the important part of the method name. The method is called `cellForRowAt`, and will be called when you need to provide a row. The row to show is specified in the parameter: `indexPath`, which is of type `IndexPath`. This is a data type that contains both a section number and a row number. We only have one section, so we can ignore that and just use the row number.
+Deuxièmement, `cellForRowAt indexPath: IndexPath` est la partie importante du nom de la méthode. Nommée `cellForRowAt`, elle sera appelée lorsque vous aurez besoin d'afficher une ligne. La ligne à afficher est spécifiée dans le paramètre: `indexPath`, qui est de type `IndexPath`. Ce type de données contient à la fois un numéro de section et un numéro de ligne. Nous n'avons qu'une seule section, nous pouvons donc l'ignorer et utiliser simplement le numéro de ligne.
 
-Third, `-> UITableViewCell` means this method must return a table view cell. If you remember, we created one inside Interface Builder and gave it the identifier “Picture”, so we want to use that.
+Troisièmement, `-> UITableViewCell` signifie que cette méthode doit retourner une cellule de tableau. Si vous vous rappelez, nous en avons créé une dans Interface Builder et lui avons donné l'identifiant "Picture". Nous souhaitons donc l'utiliser.
 
-Here’s where a little bit of iOS magic comes in: if you look at the Settings app, you’ll see it can fit only about 12 rows on the screen at any given time, depending on the size of your phone.
+Et c'est ici qu'intervient un petit peu de magie d'iOS : si vous regardez l’application Réglages, vous verrez qu’elle ne peut contenir à tout moment qu’une douzaine de lignes à l’écran, en fonction de la taille de votre téléphone.
 
-To save CPU time and RAM, iOS only creates as many rows as it needs to work. When one rows moves off the top of the screen, iOS will take it away and put it into a reuse queue ready to be recycled into a new row that comes in from the bottom. This means you can scroll through hundreds of rows a second, and iOS can behave lazily and avoid creating any new table view cells – it just recycles the existing ones.
+Pour économiser du temps processeur et de la mémoire vive, iOS ne crée uniquement que le nombre de lignes qu'il a besoin d'afficher. Lorsqu'une ligne quitte le haut de l'écran, iOS l'enlève et la place dans une file d'attente, prête à être réutilisée dans une nouvelle ligne qui entre par le bas. Cela signifie que vous pouvez faire défiler des centaines de lignes à la seconde et qu'IOS peut se reposer car il n'a pas besoin de créer de nouvelles cellules. Il lui suffit simplement de recycler les cellules existantes.
 
-This functionality is baked right into iOS, and it’s exactly what our code does on this line:
+Cette fonctionnalité est directement intégrée à iOS et c’est exactement ce que notre code fait sur cette ligne:
 
     let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
 
-That creates a new constant called `cell` by dequeuing a recycled cell from the table. We have to give it the identifier of the cell type we want to recycle, so we enter the same name we gave Interface Builder: “Picture”. We also pass along the index path that was requested; this gets used internally by the table view.
+Cela crée une nouvelle constante appelée `cell` qui va recycler une cellule de la file d'attente et l'afficher dans notre tableau. Nous devons lui donner l'identifiant de la cellule que nous voulons recycler, nous entrons donc le même nom que celui que nous avons renseigné précédemment dans Interface Builder : "Picture". Nous passons également le numéro de section et de ligne (indexPath) qui sera utilisé en interne par la Table View.
 
-That will return to us a table view cell we can work with to display information. You can create your own custom table view cell designs if you want to (more on that much later!), but we’re using the built-in Basic style that has a text label. That’s where line two comes in: it gives the text label of the cell the same text as a picture in our array. Here’s the code again:
+On assigne donc à la constante `cell` une cellule de tableau avec laquelle nous pouvons travailler pour afficher des informations. Vous pouvez créer si vous le souhaitez vos propres cellules personnalisées (nous en parlerons beaucoup plus tard !), mais nous allons utiliser le style Basic qui contient une zone de texte (textLabel). C’est là que la deuxième ligne entre en action : elle assigne au textLabel de la cellule le nom d'une image présent dans l'Array "pictures". Voici à nouveau le code:
 
     cell.textLabel?.text = pictures[indexPath.row]
 
-The `cell` has a property called `textLabel`, but it’s optional: there might be a text label, or there might not be – if you had designed your own, for example. Rather than write checks to see if there is a text label or not, Swift lets us use a question mark – `textLabel?` – to mean “do this only if there is an actual text label there, or do nothing otherwise.”
+La cellule a une propriété appelée `textLabel`, mais elle est optionnelle : il peut y avoir une étiquette de texte, ou pas - notamment si c'est vous qui avez conçu votre propre cellule. Plutôt que d’écrire du code pour vérifier s’il existe ou non une étiquette de texte, Swift nous laisse utiliser un point d’interrogation - `textLabel?` - pour signifier "fais le uniquement s’il existe une étiquette de texte, sinon ne fais rien.
 
-We want to set the label text to be the name of the correct picture from our `pictures` array, and that’s exactly what the code does. `indexPath.row` will contain the row number we’re being asked to load, so we’re going to use that to read the corresponding picture from `pictures`, and place it into the cell’s text label.
+Nous voulons que l’étiquette de texte contienne le nom de la bonne image de notre Array `pictures`, et c’est exactement ce que fait le code `indexPath.row`, qui contient le numéro de la ligne à afficher, nous allons donc l'utiliser pour lire le nom de l'image correspondante dans` images` et le placer dans le libellé de la cellule.
 
-The last line in the method is `return cell`. Remember, this method expects a table view cell to be returned, so we need to send back the one we created – that’s what the `return cell` does.
+La dernière ligne de la méthode est `return cell`. Souvenez-vous, cette méthode s'attend à ce qu'une cellule de tableau soit retournée. Nous devons donc renvoyer celle que nous avons créée - c'est ce que fait `return cell`.
 
-With those two pretty small methods in place, you can run your code again now and see how it looks. All being well you should now see 10 table view cells, each one with a different picture name inside. If you click on one of them it will turn gray, but nothing else will happen. Let’s fix that now…
+Avec ces deux petites méthodes en place, vous pouvez exécuter votre code à nouveau et voir maintenant à quoi il ressemble. Si tout va bien, vous devriez voir 10 cellules, chacune avec un nom d’image différent. Si vous cliquez sur l'une d'elles, elle devient grise, mais il ne se passera rien d'autre. On va régler ça maintenant…
