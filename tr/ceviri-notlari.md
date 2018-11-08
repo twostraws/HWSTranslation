@@ -2,7 +2,7 @@
 + Yorumları  Türkçe'ye çeviriyorum.
 + Değişken adlarını çevirmiyorum, sadece gerektiğinde parantez içinde bir kez anlamını yazıyorum.
 
-# Sözcükler:
+# Terimler:
 + operator: operatör
 + statement: ifade
 + code block: kod bloğu
@@ -10,8 +10,6 @@
 + variable: değişken
 + constant: sabit
 + user interface: kullanıcı arayüzü
-
-# Terimler:
 + Playground: oyun alanı
 + String: String (metin)
 + Type inference: Tip çıkarsaması
@@ -35,3 +33,6 @@
 + force unwrapping optionals: optional'ları zorla açma
 + implicitly unwrapped optionals: dolaylı olarak açılan optional'lar
 + optional chaining: optional zincirleme
++ property : özellik
++ property observer: özellik gözleyici
++ computed properties : hesaplanmış özellikler
