@@ -40,3 +40,6 @@
 + typecasting: tipleme
 + optional downcasting: seçimli indirgeme
 + forced downcasting: zorla indirgeme
++ closure: closure
++ trailing closure: takip eden closure
++ syntactic sugar: sözdizimsel güzellik
