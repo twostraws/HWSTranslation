@@ -36,3 +36,7 @@
 + property : özellik
 + property observer: özellik gözleyici
 + computed properties : hesaplanmış özellikler
++ polymorphism: çokbiçimlilik
++ typecasting: tipleme
++ optional downcasting: seçimli indirgeme
++ forced downcasting: zorla indirgeme
