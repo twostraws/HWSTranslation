@@ -1,4 +1,4 @@
-# Concevoir un écran affichant l'image
+# Concevoir un écran affichant une image
 
 À ce stade de notre application, nous avons une liste d'images à choisir, mais bien que nous puissions appuyer sur leur nom, il ne se passe rien. Notre prochain objectif est de concevoir un nouvel écran qui apparaîtra lorsque l'utilisateur appuiera sur une ligne. Nous allons lui faire afficher en plein écran la photo sélectionnée, qui apparaîtra en glissant automatiquement lorsqu'on tappe sur le nom de l'image.
 
@@ -51,30 +51,30 @@ Avec les contraintes ajoutées, il reste encore une chose à faire avant d’avo
 
 Cette propriété est comme le tableau `pictures` que nous avons créé précédemment, mais elle a une syntaxe un peu plus "intéressante" en Swift que nous devons expliquer. Encore plus astucieux, elle est créée à l’aide d’un outil de conception d’interface utilisateur vraiment bizarre qui va faire chauffer votre cerveau si vous avez utilisé d’autres environnements de développement graphiques (IDE).
 
-Let’s dive in, and I’ll explain on the way. Xcode has a special display layout called the Assistant Editor, which splits your Xcode editor in two: the view you had before on top, and a related view at the bottom. In this case, it's going to show us Interface Builder on top, and the code for the detail view controller below.
+Entrons dans le vif du sujet, je vais vous expliquer comment ça fonctionne. Xcode a une disposition d'affichage spéciale appelée Assistant Editor, qui divise l'éditeur de Xcode en deux : la vue que vous aviez précédemment en haut et une vue associée en bas. Dans ce cas, il va nous montrer Interface Builder en haut, et le code du Detail View Controller en-bas.
 
-Xcode decides what code to show based on what item is selected in Interface Builder, so make sure the image view is still selected and choose View > Assistant Editor > Show Assistant Editor from the menu. You can also use the keyboard shortcut Alt+Cmd+Return if you prefer.
+Xcode décide quel code à afficher en fonction de l'élément sélectionné dans Interface Builder. Assurez-vous donc que Image View est toujours sélectionné et cliquez dans la barre des menus sur View > Assistant Editor > Show Assistant Editor. Vous pouvez également utiliser le raccourci clavier Alt + Cmd + Return si vous préférez.
 
-Xcode can display the assistant editor as two vertical panes rather than two horizontal panes. I find the horizontal panes easiest – i.e., one above the other. You can switch between them by going to View > Assistant Editor and choosing either Assistant Editors On Right or Assistant Editors on Bottom.
+Xcode peut afficher Assistant Editor sous la forme de deux volets verticaux plutôt que de deux volets horizontaux. Je trouve les volets horizontaux plus faciles, c’est-à-dire les uns au dessus des autres. Vous pouvez basculer entre ces deux modes en allant dans View > Assistant Editot et en choisissant soit Assistant Editor On Right soit Assistant Editor On Bottom.
 
-Regardless of which you prefer, you should now see the detail view controller in Interface Builder in one pane, and in the other pane the source code for DetailViewController.swift. Xcode knows to load DetailViewController.swift because you changed the class for this screen to be “DetailViewController” just after you changed its storyboard ID.
+Quel que soit le mode que vous préférez, vous devriez voir maintenant le Detail View Controller d'Interface Builder dans un volet, et dans l'autre volet, le code source de DetailViewController.swift. Xcode sait qu'il faut charger DetailViewController.swift car vous avez modifié la classe pour que cet écran soit «DetailViewController» juste après avoir modifié son ID de storyboard.
 
-Now for the bizarre piece of UI. What I want you to do is this:
+Passons maintenant à la partie bizarre de l'interface utilisateur. Voici ce que je veux que vous fassiez:
 
-1. Make sure the image view is selected.
-2. Hold down the Ctrl key on your keyboard.
-3. Press your mouse button down on the image view, but hold it down – don’t release it.
-4. While continuing to hold down Ctrl and your mouse button, drag from the image view into your code – into the other assistant editor pane.
-5. As you move your mouse cursor, you should see a blue line stretch out from the image view into your code. Stretch that line so that it points between `class DetailViewController: UIViewController {` and `override func viewDidLoad() {`.
-6. When you’re between those two, a horizontal blue line should appear, along with a tooltip saying Insert Outlet Or Outlet Connection. When you see that, let go of both Ctrl and your mouse button. (It doesn’t matter which one you release first.)
+1. Assurez-vous que Image View est sélectionné.
+2. Maintenez la touche Ctrl de votre clavier enfoncée.
+3. Appuyez sur le bouton de la souris sur Image View et maintenez-le enfoncé. Ne le relâchez pas.
+4. Tout en maintenant les touches Ctrl et le bouton de la souris enfoncés, faites glisser Image View vers votre code - dans l'autre volet de l'éditeur.
+5. Lorsque vous déplacez le curseur de votre souris, une ligne bleue devrait s’étirer en partant de Image View vers votre code. Étirez cette ligne de sorte qu'elle pointe entre la classe `DetailViewController: UIViewController {` et `override func viewDidLoad() {`.
+6. Lorsque vous vous trouvez entre les deux, une ligne bleue horizontale devrait apparaître, ainsi qu’une info-bulle disant "Insert Outlet Or Outlet Connection". Lorsque vous voyez cela, relâchez Ctrl et le bouton de votre souris. (Peu importe lequel vous libérez en premier.)
 
-If you follow those steps, a balloon should appear with five fields: Connection, Object, Name, Type, and Storage.
+Si vous suivez ces étapes, une bulle devrait apparaître avec cinq champs : Connection, Object, Name, Type et Storage.
 
-![When you Ctrl-drag from Interface Builder into your code, a bubble will appear offering to create an outlet for you.](1-22.png)
+![Lorsque vous faites glisser un élément d’Interface Builder dans votre code en maintenant la touche Ctrl enfoncée, une info-bulle apparaît et vous proposer de créer un Outlet.](1-22.png)
 
-By default the options should be “Outlet” for connection, “Detail View Controller” for Object, nothing for name, “UIImageView” for type, and “Strong” for storage. If you see “Weak” for storage please change it to “Strong” – Xcode will remember that setting from now on.
+Par défaut, les options devraient être "Outlet" pour connection, "Detail View Controller" pour Object, rien pour Name, "UIImageView" pour Type et "Strong" pour la dernière option. Si vous voyez "Weak" à la place de "Strong", veuillez changer en "Strong" - Xcode se souviendra de ce paramétrage à partir de maintenant.
 
-Leave all of them alone except for Name – I’d like you to enter “imageView” in there. When you’ve done that click the Connect button, and Xcode will insert a line of code into DetailViewController.swift. You should see this:
+Laissez-les tous comme ils sont à l'exception de Name - j'aimerais que vous saisissiez "imageView" à cet endroit. Lorsque vous avez terminé, cliquez sur le bouton Connect. Xcode insère une ligne de code dans DetailViewController.swift. Vous devriez voir ceci:
 
     class DetailViewController: UIViewController {
         @IBOutlet var imageView: UIImageView!
@@ -82,21 +82,21 @@ Leave all of them alone except for Name – I’d like you to enter “imageVie
         override func viewDidLoad() {
             super.viewDidLoad()
 
-To the left of the new line of code, in the gutter next to the line number, is a gray circle with a line around it. If you move your mouse cursor over that you’ll see the image view flash – that little circle is Xcode’s way of telling you the line of code is connected to the image view in your storyboard.
+À la gauche de la nouvelle ligne de code, là où sont affichés les numéros des lignes, se trouve un cercle gris entouré d'un trait. Si vous déplacez le curseur de votre souris dessus, vous voyez l'élément Image View se mettre en surbrillance dans le storyboard. Ce petit cercle est le moyen par lequel Xcode vous indique que la ligne de code est connectée à l'élément Image View dans votre storyboard.
 
-So, we Ctrl-dragged from Interface Builder straight into our Swift file, and Xcode wrote a line of code for us as a result. Some bits of that code are new, so let's break down the whole line:
+Nous avons donc fait glisser l'élément Image View depuis Interface Builder, en maintenant Ctrl enfoncé, directement dans notre fichier Swift, et Xcode a écrit une ligne de code pour nous. Certains morceaux de ce code sont nouveaux, alors décomposons toute la ligne:
 
-- `@IBOutlet`: This attribute is used to tell Xcode that there's a connection between this line of code and Interface Builder.
-- `var`: This declares a new variable or variable property.
-- `imageView`: This was the property name assigned to the `UIImageView`. Note the way capital letters are used: variables and constants should start with a lowercase letter, then use a capital letter at the start of any subsequent words. For example, `myAwesomeVariable`. This is sometimes called camel case.
-- `UIImageView!`: This declares the property to be of type `UIImageView`, and again we see the implicitly unwrapped optional symbol: `!`. This means that that `UIImageView` may be there or it may not be there, but we're certain it definitely will be there by the time we want to use it.
+- `@IBOutlet` : Cet attribut est utilisé pour indiquer à Xcode qu'il existe une connexion entre cette ligne de code et Interface Builder.
+- `var` : Ceci déclare une nouvelle variable ou propriété variable.
+- `imageView` : Il s'agissait du nom de la propriété attribué à `UIImageView`. Notez la manière dont les majuscules sont utilisées : les variables et les constantes doivent commencer par une minuscule, puis utilisez une majuscule au début des mots suivants. Par exemple, `myAwesomeVariable`. Ceci est appelé parfoir camel case.
+- `UIImageView!` : Ceci déclare que la propriété est de type `UIImageView`, et nous voyons à nouveau le symbole `!`, indiqunt qu'il s'agit d'un optionnel implicitement déballé. Cela signifie que `UIImageView` peut être présent ou absent, mais nous sommes certains qu’il le sera définitivement présent lorsque nous voudrons l’utiliser.
 
-If you were struggling to understand implicitly unwrapped optionals (don't worry; they are complicated!), this code might make it a bit clearer. You see, when the detail view controller is being created, its view hasn't been loaded yet – it's just some code running on the CPU.
+Si vous avez du mal à comprendre les optionnels implicitement déballés (ne vous inquiétez pas, c'est compliqué !), Ce code pourrait le rendre un peu plus clair. Vous voyez, lorsque le contrôleur de vue Detail View Controller est en cours de création, sa vue n’a pas encore été chargée : il s’agit simplement de code exécuté par le processeur.
 
-When the basic stuff has been done (allocating enough memory to hold it all, for example), iOS goes ahead and loads the layout from the storyboard, then connects all the outlets from the storyboard to the code.
+Lorsque les opérations de base sont terminées (par exemple, en allouant suffisamment de mémoire pour tout contenir), iOS continue et charge la mise en page à partir du storyboard, puis connecte toutes les propriétés (Outlets) du storyboard au code.
 
-So, when the detail controller is first made, the `UIImageView` doesn't exist because it hasn't been created yet – but we still need to have some space for it in memory. At this point, the property is `nil`, or just some empty memory. But when the view gets loaded and the outlet gets connected, the `UIImageView` will point to a real `UIImageView`, not to `nil`, so we can start using it.
+Ainsi, lorsque Detail View Controller est créé pour la première fois, l'élément `UIImageView` n'existe pas car il n'a pas encore été créé - mais nous avons besoin d'un espace en mémoire pour lui. À ce stade, la propriété est `nil` ou simplement un peu de mémoire vide. Mais quand la vue a été chargée et les outlets ont été connectés, `UIImageView` pointera vers un vrai `UIImageView`, pas `nil`, donc nous pouvons commencer à l'utiliser.
 
-In short: it starts life as `nil`, then gets set to a value before we use it, so we're certain it won't ever be `nil` by the time we want to use it – a textbook case of implicitly unwrapped optionals. If you still don't understand implicitly unwrapped optionals, that's perfectly fine – keep on going and they'll become clear over time.
+En bref : sa vie commence par `nil`, puis est définie sur une valeur avant que nous ne l'utilisions. Nous sommes donc certains qu'il ne sera jamais `nil` avant que nous voulions l'utiliser - un cas d'école d'optionnel implicitement déballé. Si vous ne comprenez toujours pas les optionels implicitement déballés, ce n'est pas grave - continuez et tout deviendra claire au fil du temps.
 
-That’s our detail screen complete – we’re done with Interface Builder for now, and can return to code. This also means we’re done with the assistant editor, so you can return to the full-screen editor by going to View > Standard Editor > Show Standard Editor.
+Notre écran affichant l'image est terminé. Nous en avons terminé avec Interface Builder pour l’instant et nous pouvons revenir au code. Cela signifie également que nous en avons terminé avec Assistant Editor. Vous pouvez donc revenir à l’éditeur plein écran en sélectionnant View > Standard Editor > Show Standard Editor.
