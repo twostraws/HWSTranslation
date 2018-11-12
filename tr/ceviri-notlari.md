@@ -43,3 +43,6 @@
 + closure: closure
 + trailing closure: takip eden closure
 + syntactic sugar: sözdizimsel güzellik
++ single view app: tek arayüzlü uygulama
++ organization identifier: kuruluş tanımlayıcısı
++ checkbox: onay kutucuğu
