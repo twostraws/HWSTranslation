@@ -39,31 +39,31 @@ Il y a quelques points importants à noter ici:
 
 Si vous exécutez l'application maintenant, vous verrez que vous pouvez appuyer sur le nom d'une image pour l'afficher à sa taille d'origine, et qu'elle ne sera plus étirée. Lorsque vous visualisez une image, vous pouvez appuyer n'importe où à l'écran pour masquer la barre de navigation en haut, puis taper pour l'afficher à nouveau.
 
-The third change is a small but important one. If you look at other apps that use table views and navigation controllers to display screens (again, Settings is great for this), you might notice gray arrows at the right of the table view cells. This is called a disclosure indicator, and it’s a subtle user interface hint that tapping this row will show more information.
+Le troisième changement est petit mais important. Si vous regardez d'autres applications qui utilisent des Table Views et des Navigation Controllers pour afficher des écrans (encore une fois, l'application Réglages est idéale pour cela), vous remarquerez peut-être des flèches grises à droite des cellules du tableau. C’est un indice subtil de l’interface utilisateur indiquant que taper sur cette ligne affichera plus d’informations.
 
-It only takes a few clicks in Interface Builder to get this disclosure arrow in our table view. Open Main.storyboard, then click on the table view cell – that’s the one that says “Title”, directly below “Prototype Cells”. The table view contains a cell, the cell contains a content view, and the content view contains a label called “Title” so it’s easy to select the wrong thing. As a result, you’re likely to find it easiest to use the document outline to select exactly the right thing – you want to select the thing marked “Picture”, which is the reuse identifier we attached to our table view cell.
+Il ne faut que quelques clics dans Interface Builder pour afficher cette flèche dans notre tableau. Ouvrez Main.storyboard, puis cliquez sur Table View Cell - c’est celle qui indique "Title", directement sous "Prototype Cells". Table View contient une cellule, la cellule contient une vue, et la vue  contient un Label appelée "Title", il est donc facile de sélectionner le mauvais élément. Par conséquent, vous trouverez probablement plus facile d’utiliser le volet Document Outline pour sélectionner exactement le bon élément : vous souhaitez sélectionner le libellé "Picture", qui est l’identifiant (Identifer) que nous avons associé à la cellule de notre tableau.
 
-When that’s selected, you should be able go to the attributes inspector and see “Style: Basic”, “Identifier: Picture”, and so on. You will also see “Accessory: None” – please change that to “Disclosure Indicator”, which will cause the gray arrow to show.
+Lorsque cet élément est sélectionnée, vous devriez pouvoir accéder à Attributes Inspector (l'inspecteur des propriétés) dans le volet de droite et voir "Style : Basic", "Identifier : Picture", etc. Vous verrez également "Accessory : None" - veuillez le remplacer par "Disclosure Indicator", ce qui entraînera l'affichage de la flèche grise.
 
-The fourth is small but important: we’re going to place some text in the gray bar at the top. You’ve already seen that view controllers have `storyboard` and `navigationController` properties that we get from `UIViewController`. Well, they also have a `title` property that automatically gets read by navigation controller: if you provide this title, it will be displayed in the gray navigation bar at the top.
+Le quatrième est également petit mais tout aussi important : nous allons placer du texte dans la barre grise en haut. Vous avez déjà vu que les contrôleurs de vue ont les propriétés `storyboard` et `navigationController` que nous obtenons depuis `UIViewController`. Eh bien, ils ont aussi une propriété `title` qui est automatiquement lue par le contrôleur de navigation : si vous fournissez ce titre, il sera affiché dans la barre de navigation grise en haut.
 
-In `ViewController`, add this code to `viewDidLoad()` after the call to `super.viewDidLoad()`:
+Dans `ViewController`, ajoutez ce code à `viewDidLoad()` après l'appel à `super.viewDidLoad()`:
 
     title = "Storm Viewer"
 
-This title is also automatically used for the “Back” button, so that users know what they are going back to.
+Ce titre est également utilisé automatiquement pour le bouton de retour "Back", afin que les utilisateurs sachent à quoi ils retournent.
 
-In `DetailViewController` we *could* add something like this to `viewDidLoad()`:
+Dans `DetailViewController`, nous *pourrions* ajouter quelque chose comme ceci à `viewDidLoad()` :
 
     title = "View Picture"
 
-That would work fine, but instead we’re going to use some dynamic text: we’re going to display the name of the selected picture instead.
+Cela fonctionnerait bien, mais au lieu de cela, nous allons utiliser du texte dynamique : nous allons plutôt afficher le nom de la photo sélectionnée.
 
-Add this to `viewDidLoad()` in `DetailViewController`:
+Ajoutez ceci à la méthode `viewDidLoad()` dans le fichier `DetailViewController.swift` :
 
     title = selectedImage
 
-We don’t need to unwrap `selectedImage` here because both `selectedImage` and `title` are optional strings – we’re assigning one optional string to another. `title` is optional because it’s nil by default: view controllers have no title, thus showing no text in the navigation bar.
+Nous n’avons pas besoin ici de déballer `selectedImage` parce que `selectedImage` et `title` sont de type optional strings (chaînes de caractères optionnelles). Nous affectons un type de donnée optional strings à un autre. `title` est optionnel car il est nil par défaut : les contrôleurs de vue n’ont pas de titre, ce qui n’affiche aucun texte dans la barre de navigation.
 
 
 ## Large titles in iOS 11
