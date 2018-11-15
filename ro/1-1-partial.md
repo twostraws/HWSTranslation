@@ -2,7 +2,7 @@
 
 În acest proiect vei face o aplicație care permite utilizatorilor sa parcurgă o listă de imagini, apoi să selecteze una spre vizionare. Este intenţionat simplu, pentru că sunt multe alte lucruri pe care va trebui să le înveți pe parcurs, așa că ține-te bine - o să dureze ceva.
 
-Launch Xcode, and choose "Create a new Xcode project" from the welcome screen. Choose Single View App from the list and click Next. For Product Name enter Project1, then make sure you have Swift selected for language and Universal for devices.
+Lansează Xcode și alege "Create a new Xcode project" din ecranul de bun venit. Alege Single View App din listă și apasă Next. Pentru Product Name scrie Project1 și fii sigur că ai selectat Swift ca limbaj și Universal pentru dispozitive.
 
 ![Creating a new Single View App project in Xcode.](1-4.png)
 
