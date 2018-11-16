@@ -46,3 +46,6 @@
 + single view app: tek arayüzlü uygulama
 + organization identifier: kuruluş tanımlayıcısı
 + checkbox: onay kutucuğu
++ log file: günlük dosyası
++ view controller: görüntü kontrolörü
++ bundle: bağlam
