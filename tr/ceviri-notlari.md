@@ -1,6 +1,6 @@
 # Notlar
 + Yorumları  Türkçe'ye çeviriyorum.
-+ Değişken adlarını çevirmiyorum, sadece gerektiğinde parantez içinde bir kez anlamını yazıyorum.
++ Değişken adlarını ve Xcode arayüzündeki yazıları çevirmiyorum, sadece gerektiğinde parantez içinde bir kez anlamını yazıyorum.
 
 # Terimler:
 + operator: operatör
@@ -47,5 +47,11 @@
 + organization identifier: kuruluş tanımlayıcısı
 + checkbox: onay kutucuğu
 + log file: günlük dosyası
-+ view controller: görüntü kontrolörü
++ view controller: görüntü denetleyicisi
 + bundle: bağlam
++ interface builder: arayüz oluşturucu
++ class hierarchy: sınıf hiyerarşisi
++ table view controller: tablo ekranı denetleyicisi
++ project navigator: proje kılavuzu
++ document outline: döküman ana hatları
++ object library: nesne kütüphanesi
