@@ -1,0 +1,6 @@
+{
+	"chapters": [
+		{"number": "0", "title": "Introduction: Swift for Complete Beginners", "subtitle": "If you want to learn the language all at once before you start making apps, this is for you." },
+		{"number": "1", "title": "Project 1: Storm Viewer", "subtitle": "Get started coding in Swift by making an image viewer app and learning key concepts."}
+	]
+}
