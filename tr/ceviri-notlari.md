@@ -55,3 +55,4 @@
 + project navigator: proje kılavuzu
 + document outline: döküman ana hatları
 + object library: nesne kütüphanesi
++ size inspector: boyut denetçisi
