@@ -1,8 +1,9 @@
 {
+	"title": "Hacking with Swift en français",
 	"chapters": [
-		{"number": "0", "title": "Introduction : Swift pour les débutants", "subtitle": "Si vous souhaitez apprendre le langage d'un coup avant de commencer à créer des applications, ce chapitre est pour vous." },
-		{"number": "1", "title": "Projet 1 : Storm Viewer", "subtitle": "Commencez à coder en Swift en créant une application de visualisation d'images et en apprenant des concepts clés."}
-		{"number": "2", "title": "Projet 2 : Devinez le drapeau", "subtitle": "Créez un jeu en utilisant UIKit et découvrez les entiers, les boutons, les couleurs et les actions."},
-		{"number": "3", "title": "Projet 3 : Médias sociaux", "subtitle": "Permettez aux utilisateurs de partager sur Facebook et Twitter en modifiant le projet 1."},
+		{"number": "0", "title": "Introduction: Swift pour les débutants", "subtitle": "Si vous souhaitez apprendre le langage d'un coup avant de commencer à créer des applications, ce chapitre est pour vous." },
+		{"number": "1", "title": "Projet 1: Storm Viewer", "subtitle": "Commencez à coder en Swift en créant une application de visualisation d'images et en apprenant des concepts clés."},
+		{"number": "2", "title": "Projet 2: Devinez le drapeau", "subtitle": "Créez un jeu en utilisant UIKit et découvrez les entiers, les boutons, les couleurs et les actions."},
+		{"number": "3", "title": "Projet 3: Médias sociaux", "subtitle": "Permettez aux utilisateurs de partager sur Facebook et Twitter en modifiant le projet 1."}
 	]
 }

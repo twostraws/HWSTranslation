@@ -1,0 +1,9 @@
+{
+	"title": "Hacking with Swift auf Deutsch",
+	"chapters": [
+		{"number": "0", "title": "Introduction: Swift for Complete Beginners", "subtitle": "If you want to learn the language all at once before you start making apps, this is for you." },
+		{"number": "1", "title": "Project 1: Storm Viewer", "subtitle": "Get started coding in Swift by making an image viewer app and learning key concepts."},
+		{"number": "2", "title": "Project 2: Guess the Flag", "subtitle": "Make a game using UIKit, and learn about integers, buttons, colors and actions."},
+		{"number": "3", "title": "Project 3: Social Media", "subtitle": "Let users share to Facebook and Twitter by modifying project 1."}
+	]
+}
