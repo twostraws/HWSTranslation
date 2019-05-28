@@ -1,6 +1,11 @@
 {
-	"title": "Hacking with Swift Online",
+	"identifier": "23C503C8-C433-4338-A7E6-A97177CCC896",
+	"title": "Hacking with Swift",
+	"description": "Learn to make iOS apps with real projects",
+	"rootURL": "href=\"https://www.hackingwithswift.com/",
+	"includeExtras": "kb",
 	"chapters": [
+		{"number": "99", "title": "Preface", "subtitle": "" },
 		{"number": "0", "title": "Introduction: Swift for Complete Beginners", "subtitle": "If you want to learn the language all at once before you start making apps, this is for you." },
 		{"number": "1", "title": "Project 1: Storm Viewer", "subtitle": "Get started coding in Swift by making an image viewer app and learning key concepts."},
 		{"number": "2", "title": "Project 2: Guess the Flag", "subtitle": "Make a game using UIKit, and learn about integers, buttons, colors and actions."},
@@ -17,15 +22,15 @@
 		{"number": "13", "title": "Project 13: Instafilter", "subtitle": "Make a photo manipulation program using Core Image filters and a UISlider."},
 		{"number": "14", "title": "Project 14: Whack-a-Penguin", "subtitle": "Build a game using SKCropNode and a sprinkling of Grand Central Dispatch."},
 		{"number": "15", "title": "Project 15: Animation", "subtitle": "Bring your interfaces to life with animation, and meet switch/case at the same time."},
-		{"number": "16", "title": "Project 16: JavaScript Injection", "subtitle": "Extend Safari with a cool feature for JavaScript developers."},
-		{"number": "17", "title": "Project 17: Swifty Ninja", "subtitle": "Learn to draw shapes in SpriteKit while making a fun and tense slicing game."},
+		{"number": "16", "title": "Project 16: Capital Cities", "subtitle": "Teach users about geography while you learn about MKMapView and annotations."},
+		{"number": "17", "title": "Project 17: Space Race", "subtitle": "Dodge space debris while you learn about per-pixel collision detection."},
 		{"number": "18", "title": "Project 18: Debugging", "subtitle": "Everyone hits problems sooner or later, so learning to find and fix them is an important skill."},
-		{"number": "19", "title": "Project 19: Capital Cities", "subtitle": "Teach users about geography while you learn about MKMapView and annotations."},
+		{"number": "19", "title": "Project 19: JavaScript Injection", "subtitle": "Extend Safari with a cool feature for JavaScript developers."},
 		{"number": "20", "title": "Project 20: Fireworks Night", "subtitle": "Learn about timers and color blends while making things go bang!"},
 		{"number": "21", "title": "Project 21: Local Notifications", "subtitle": "Send reminders, prompts and alerts even when your app isn't running."},
 		{"number": "22", "title": "Project 22: Detect-a-Beacon", "subtitle": "Learn to find and range iBeacons using our first project for a physical device."},
-		{"number": "23", "title": "Project 23: Space Race", "subtitle": "Dodge space debris while you learn about per-pixel collision detection."},
-		{"number": "24", "title": "Project 24: Swift Extensions", "subtitle": "Try your hand at improving the built-in data types of Swift."},
+		{"number": "23", "title": "Project 23: Swifty Ninja", "subtitle": "Learn to draw shapes in SpriteKit while making a fun and tense slicing game."},
+		{"number": "24", "title": "Project 24: Swift Strings", "subtitle": "Dive deep into how strings work in Swift, and learn how to add formatting on top."},
 		{"number": "25", "title": "Project 25: Selfie Share", "subtitle": "Make a multipeer photo sharing app in just 150 lines of code."},
 		{"number": "26", "title": "Project 26: Marble Maze", "subtitle": "Respond to device tilting by steering a ball around a vortex maze."},
 		{"number": "27", "title": "Project 27: Core Graphics", "subtitle": "Draw 2D shapes using Apple's high-speed drawing framework."},
@@ -40,6 +45,7 @@
 		{"number": "36", "title": "Project 36: Crashy Plane", "subtitle": "Ever wanted to make a Flappy Bird clone? Now you can do it in under an hour thanks to SpriteKit."},
 		{"number": "37", "title": "Project 37: Psychic Tester", "subtitle": "Are you psychic? Of course not. But what if we could use our coding skills to make a game to fool your friends into thinking otherwise?"},
 		{"number": "38", "title": "Project 38: GitHub Commits", "subtitle": "Get started with Core Data by building an app to fetch and store GitHub commits for Swift."},
-		{"number": "39", "title": "Project 39: Unit testing with XCTest", "subtitle": "Learn how to write unit tests and user interface tests using Xcode's built-in testing framework."}
+		{"number": "39", "title": "Project 39: Unit testing with XCTest", "subtitle": "Learn how to write unit tests and user interface tests using Xcode's built-in testing framework."},
+		{"number": "Appendix", "title": "Appendix: The Swift Knowledge Base", "subtitle": "Quick tips, tricks, and practical examples to help you do more with Cocoa Touch."}
 	]
 }
